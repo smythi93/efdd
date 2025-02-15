@@ -30,7 +30,9 @@ dependencies = [
     "numba >= 0.61.0",
     "shap >= 0.46.0",
     "joblib >= 1.4.2",
-    "sflkit >= 0.3.1"
+    "sflkit >= 0.3.1",
+    "tests4py >= 0.0.13",
+    "unidiff >= 0.7.5",
 ]
 
 [sources]

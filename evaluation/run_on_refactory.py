@@ -19,7 +19,10 @@ from tqdm import tqdm
 from efdd.events import EventCollector, instrument
 from efdd.learning import DecisionTreeDiagnosis
 
-REFACTORY = Path("refactory")
+CWD = Path.cwd().absolute()
+assert CWD == Path(__file__).parent.absolute()
+
+REFACTORY = Path("refactory").absolute()
 DATA = REFACTORY / "data"
 QUESTION_1 = DATA / "question_1"
 QUESTION_2 = DATA / "question_2"
@@ -27,7 +30,7 @@ QUESTION_3 = DATA / "question_3"
 QUESTION_4 = DATA / "question_4"
 QUESTION_5 = DATA / "question_5"
 
-EVAL = Path("refactory/eval")
+EVAL = Path("refactory/eval").absolute()
 EVAL_QUESTION_1 = EVAL / "question_1"
 EVAL_QUESTION_2 = EVAL / "question_2"
 EVAL_QUESTION_3 = EVAL / "question_3"
@@ -43,8 +46,8 @@ CODE = Path("code")
 REFERENCE = CODE / "reference" / "reference.py"
 ANS = Path("ans")
 
-ACCESS = "access.py"
-DST = "tmp.py"
+ACCESS = CWD / "access.py"
+DST = Path("tmp.py")
 
 RESULTS_PATH = Path("results")
 
@@ -65,7 +68,10 @@ LIMIT = None
 
 
 def get_features_from_tests(
-    question: int, tests: Sequence[str], src: os.PathLike, mapping_path: os.PathLike
+    question: int,
+    tests: Sequence[str],
+    src: os.PathLike,
+    mapping_path: os.PathLike,
 ) -> EventHandler:
     collector = RefactoryEventCollector(
         Path.cwd(),
@@ -133,37 +139,47 @@ def verify_example(
 def run_on_example(
     question: int, identifier: int, limit: Optional[int] = None, functions: bool = False
 ) -> Optional[Dict[str, Any]]:
-    name = f"wrong_{question}_{identifier:03d}"
-    path, eval_path = QUESTIONS[question]
-    file: Path = path / CODE / "wrong" / f"{name}.py"
-    mapping_path = Path(f"mapping_{time.time()}.json")
-    if file.exists() and verify_example(question, file, path / ANS, limit=limit):
-        LOGGER.info(f"Start evaluation of {name}")
-        if functions:
-            instrument(file, DST, mapping_path, events=["FUNCTION_ENTER"])
+    try:
+        name = f"wrong_{question}_{identifier:03d}"
+        path, eval_path = QUESTIONS[question]
+        file: Path = path / CODE / "wrong" / f"{name}.py"
+        wd: Path = Path("tmp") / name
+        shutil.rmtree(wd, ignore_errors=True)
+        wd.mkdir(parents=True, exist_ok=True)
+        shutil.copy(ACCESS, wd)
+        os.chdir(wd)
+        mapping_path = Path(f"mapping_{time.time()}.json")
+        if (
+            file.exists()
+        ):  # and verify_example(question, file, path / ANS, limit=limit):
+            LOGGER.info(f"Start evaluation of {name}")
+            if functions:
+                instrument(file, DST, mapping_path, events=["FUNCTION_ENTER"])
+            else:
+                instrument(file, DST, mapping_path)
+            LOGGER.info(f"Get evaluation features of {name}")
+            eval_features = get_features(
+                question, eval_path, file, mapping_path, limit=limit
+            )
+            LOGGER.info(f"Get oracle for {name}")
+            start = time.time()
+            model = get_model(question, path / ANS, file, mapping_path)
+            timing = time.time() - start
+            report_eval, confusion_matrix = model.evaluate(
+                eval_features,
+                output_dict=True,
+            )
+            result = {
+                "eval": report_eval,
+                "confusion": confusion_matrix,
+                "time": timing,
+            }
+            RESULTS[name] = result
+            return result
         else:
-            instrument(file, DST, mapping_path)
-        LOGGER.info(f"Get evaluation features of {name}")
-        eval_features = get_features(
-            question, eval_path, file, mapping_path, limit=limit
-        )
-        LOGGER.info(f"Get oracle for {name}")
-        start = time.time()
-        model = get_model(question, path / ANS, file, mapping_path)
-        timing = time.time() - start
-        report_eval, confusion_matrix = model.evaluate(
-            eval_features,
-            output_dict=True,
-        )
-        result = {
-            "eval": report_eval,
-            "confusion": confusion_matrix,
-            "time": timing,
-        }
-        RESULTS[name] = result
-        return result
-    else:
-        LOGGER.info(f"Skip evaluation of {name}")
+            LOGGER.info(f"Skip evaluation of {name}")
+    finally:
+        os.chdir(CWD)
 
 
 def run_on_question(
@@ -224,29 +240,32 @@ def main(*args: str, stdout=sys.stdout, stderr=sys.stderr):
     if not RESULTS_PATH.exists():
         RESULTS_PATH.mkdir(parents=True, exist_ok=True)
     result_file = "refactory"
-    if args.question is None:
-        for question in range(1, 6):
+    try:
+        if args.question is None:
+            for question in range(1, 6):
+                run_on_question(
+                    question, limit=args.limit or LIMIT, functions=ONLY_FUNCTIONS
+                )
+        elif args.example is None:
+            result_file += f"_{args.question}"
             run_on_question(
-                question, limit=args.limit or LIMIT, functions=ONLY_FUNCTIONS
+                args.question, limit=args.limit or LIMIT, functions=ONLY_FUNCTIONS
             )
-    elif args.example is None:
-        result_file += f"_{args.question}"
-        run_on_question(
-            args.question, limit=args.limit or LIMIT, functions=ONLY_FUNCTIONS
-        )
-    else:
-        result_file += f"_{args.question}_{args.example}"
-        run_on_example(
-            args.question,
-            args.example,
-            limit=args.limit or LIMIT,
-            functions=ONLY_FUNCTIONS,
-        )
-    with open(
-        RESULTS_PATH / f"{result_file}{'_functions' if ONLY_FUNCTIONS else ''}.json",
-        "w",
-    ) as result_json:
-        json.dump(RESULTS, result_json)
+        else:
+            result_file += f"_{args.question}_{args.example}"
+            run_on_example(
+                args.question,
+                args.example,
+                limit=args.limit or LIMIT,
+                functions=ONLY_FUNCTIONS,
+            )
+    finally:
+        with open(
+            RESULTS_PATH
+            / f"{result_file}{'_functions' if ONLY_FUNCTIONS else ''}.json",
+            "w",
+        ) as result_json:
+            json.dump(RESULTS, result_json)
 
 
 for question_x in QUESTION_1, QUESTION_2, QUESTION_3, QUESTION_4, QUESTION_5:
