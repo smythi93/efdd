@@ -71,7 +71,7 @@ class DiagnosisGenerator(ABC):
         return (
             self.classification_report(x_eval, y_eval, output_dict=output_dict),
             confusion_matrix(
-                y_eval.to_numpy(), self.model.predict(x_eval.to_numpy())
+                y_eval.to_numpy(), self.model.predict(x_eval.to_numpy()), labels=[0, 1]
             ).tolist(),
         )
 

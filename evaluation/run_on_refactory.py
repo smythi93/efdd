@@ -48,6 +48,7 @@ ANS = Path("ans")
 
 ACCESS = CWD / "access.py"
 DST = Path("tmp.py")
+TMP_ACCESS = Path("tmp_access.py")
 
 RESULTS_PATH = Path("results")
 
@@ -146,7 +147,7 @@ def run_on_example(
         wd: Path = Path("tmp") / name
         shutil.rmtree(wd, ignore_errors=True)
         wd.mkdir(parents=True, exist_ok=True)
-        shutil.copy(ACCESS, wd)
+        shutil.copy(ACCESS, wd / TMP_ACCESS)
         os.chdir(wd)
         mapping_path = Path(f"mapping_{time.time()}.json")
         if (
@@ -157,14 +158,18 @@ def run_on_example(
                 instrument(file, DST, mapping_path, events=["FUNCTION_ENTER"])
             else:
                 instrument(file, DST, mapping_path)
+            LOGGER.info(f"Get oracle for {name}")
+            start = time.time()
+            try:
+                model = get_model(question, path / ANS, file, mapping_path)
+            except ValueError:
+                LOGGER.info(f"Skip evaluation of {name}")
+                return None
+            timing = time.time() - start
             LOGGER.info(f"Get evaluation features of {name}")
             eval_features = get_features(
                 question, eval_path, file, mapping_path, limit=limit
             )
-            LOGGER.info(f"Get oracle for {name}")
-            start = time.time()
-            model = get_model(question, path / ANS, file, mapping_path)
-            timing = time.time() - start
             report_eval, confusion_matrix = model.evaluate(
                 eval_features,
                 output_dict=True,
@@ -277,9 +282,9 @@ def oracle(test: str, expected_results: Dict[str, Any] = None):
     expected_results = expected_results or dict()
     try:
         process = subprocess.run(
-            ["python", ACCESS, test],
+            ["python", TMP_ACCESS, test],
             stdout=subprocess.PIPE,
-            stderr=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
             timeout=TIMEOUT,
         )
     except subprocess.TimeoutExpired:
