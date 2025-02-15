@@ -49,9 +49,9 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
 
         report[identifier]["time"] = dict()
 
-        start = time.time()
+        start_time = time.time()
         r = t4p.checkout(project)
-        report[identifier]["time"]["checkout"] = time.time() - start
+        report[identifier]["time"]["checkout"] = time.time() - start_time
         if r.successful:
             report[identifier]["checkout"] = "successful"
         else:
@@ -62,9 +62,9 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
 
         mapping = MAPPINGS_DIR / f"{project}.json"
         sfl_path = TMP / f"sfl_{identifier}"
-        start = time.time()
+        start_time = time.time()
         r = sfl.sflkit_instrument(sfl_path, project, mapping=mapping)
-        report[identifier]["time"]["instrument"] = time.time() - start
+        report[identifier]["time"]["instrument"] = time.time() - start_time
         if r.successful:
             report[identifier]["build"] = "successful"
         else:
@@ -88,11 +88,11 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
             Removing the original version fixes this problem.
             """
             shutil.rmtree(original_checkout, ignore_errors=True)
-        start = time.time()
+        start_time = time.time()
         r = sfl.sflkit_unittest(
             sfl_path, relevant_tests=True, all_tests=False, include_suffix=True
         )
-        report[identifier]["time"]["test"] = time.time() - start
+        report[identifier]["time"]["test"] = time.time() - start_time
         if r.successful:
             report[identifier]["test"] = "successful"
         else:
