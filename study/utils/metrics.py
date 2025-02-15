@@ -4,14 +4,16 @@ import os
 import tests4py.api as t4p
 from sflkit import Analyzer
 from sflkit.analysis.analysis_type import AnalysisType
+from sflkit.analysis.predicate import Predicate
+from sflkit.analysis.spectra import Spectrum
 from sflkit.evaluation import Rank, Scenario, Average
 from sflkit.language.language import Language
 from tests4py.projects import TestStatus
 
-from utils.analyze import analyze
+from utils.analyze import get_analysis
 from utils.constants import (
     METRICS,
-    CORRELATION,
+    SUSPICIOUSNESS,
     LOCALIZATION,
     BEST,
     MEAN,
@@ -27,6 +29,10 @@ from utils.constants import (
     ANALYSIS_DIR,
     UNIFIED_MAX,
     UNIFIED_AVG,
+    CORRELATION,
+    TRUE,
+    FALSE,
+    TOTAL,
 )
 
 
@@ -39,19 +45,37 @@ def get_results_for_type(
     eval_metric=max,
 ):
     type_results = dict()
-    type_results[CORRELATION] = dict()
+    type_results[SUSPICIOUSNESS] = dict()
+    type_results[CORRELATION] = {
+        TRUE: [],
+        FALSE: [],
+        TOTAL: [],
+    }
     type_results[LOCALIZATION] = dict()
+    analysis = analyzer.get_analysis_by_type(type_)
+    for object_ in analysis:
+        if isinstance(object_, Spectrum):
+            type_results[CORRELATION][TRUE].append(object_.failed_observed)
+            type_results[CORRELATION][FALSE].append(object_.failed_observed)
+        elif isinstance(object_, Predicate):
+            type_results[CORRELATION][TRUE].append(object_.true_relevant)
+            type_results[CORRELATION][TRUE].append(object_.false_relevant)
+        type_results[CORRELATION][TOTAL].append(
+            object_.failed_observed + object_.passed_observed
+        )
     for metric in METRICS:
-        suggestions = analyzer.get_sorted_suggestions(report.location, metric, type_)
+        suggestions = analyzer.get_sorted_suggestions_from_analysis(
+            report.location, analysis, metric
+        )
         if suggestions:
-            type_results[CORRELATION][metric.__name__] = {
+            type_results[SUSPICIOUSNESS][metric.__name__] = {
                 BEST: analyzer.max_suspiciousness,
                 MEAN: analyzer.mean_suspiciousness,
                 MEDIAN: analyzer.median_suspiciousness,
                 WORST: analyzer.min_suspiciousness,
             }
         else:
-            type_results[CORRELATION][metric.__name__] = {
+            type_results[SUSPICIOUSNESS][metric.__name__] = {
                 BEST: 0,
                 MEAN: 0,
                 MEDIAN: 0,
@@ -73,7 +97,7 @@ def get_results_for_type(
     return type_results
 
 
-def main(project_name, bug_id, start: int = None, end: int = None):
+def get_metrics(project_name, bug_id, start: int = None, end: int = None):
     Language.PYTHON.setup()
     os.makedirs(RESULTS_DIR, exist_ok=True)
     for project in t4p.get_projects(project_name, bug_id):
@@ -96,7 +120,7 @@ def main(project_name, bug_id, start: int = None, end: int = None):
         if analysis_file.exists():
             analyzer = Analyzer.load(analysis_file)
         else:
-            analyzer = analyze(project, analysis_file)
+            analyzer = get_analysis(project, analysis_file)
         report = t4p.checkout(project)
         if not report.successful:
             raise report.raised

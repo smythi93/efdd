@@ -9,9 +9,9 @@ from sflkit.evaluation import Scenario
 from utils.constants import (
     FEATURES,
     UNIFIED,
-    CORRELATION,
+    SUSPICIOUSNESS,
     LOCALIZATION,
-    CORRELATIONS,
+    AGGREGATES,
     LOCALIZATIONS,
     LOCALIZATION_COMP,
     METRICS,
@@ -47,8 +47,8 @@ tex_translation = {
     Scenario.AVG_CASE.value: "Average Case Debugging",
     "exam": "\\EXAM{}",
     "wasted-effort": "W Effort",
-    "unified_max": "$\\text{Unified}_\\text{max}$",
-    "unified_avg": "$\\text{Unified}_\\text{mean}$",
+    "unified_max": "$\\text{Multi}_\\text{max}$",
+    "unified_avg": "$\\text{Multi}_\\text{mean}$",
 }
 
 
@@ -78,7 +78,14 @@ def get_localization_tex_table(results, best_for_each_metric):
     )
     unified_table = table[:]
     for feature in FEATURES + UNIFIED:
-        t = table if feature in FEATURES else unified_table
+        if feature in FEATURES:
+            t = table
+            if FEATURES.index(feature) % 2 == 1:
+                t += "\\rowcolor{row}\n"
+        else:
+            t = unified_table
+            if UNIFIED.index(feature) % 2 == 1:
+                t += "\\rowcolor{row}\n"
         for metric in METRICS:
             if metric == METRICS[0]:
                 t += f"    \\multirow{{{len(METRICS)}}}*{{{tex_translation[feature]}}}"
@@ -157,22 +164,22 @@ def get_correlation_tex_table(results, best_for_each_metric):
             else:
                 table += "    "
             table += f" & {tex_translation[metric]}"
-            for correlation in CORRELATIONS:
+            for correlation in AGGREGATES:
                 text_bf = (
                     feature
-                    in best_for_each_metric[CORRELATION][metric][correlation][0][1]
+                    in best_for_each_metric[SUSPICIOUSNESS][metric][correlation][0][1]
                 )
                 table += " & "
                 if text_bf:
                     table += "\\textbf{\\color{deepblue}"
                 table += (
-                    f"{results[CORRELATION][feature][metric][correlation][AVG]:.3f}"
+                    f"{results[SUSPICIOUSNESS][feature][metric][correlation][AVG]:.3f}"
                 )
                 if text_bf:
                     table += "}"
             if metric == METRICS[0]:
                 subject_part = ""
-                # TODO CORRELATION
+                # TODO SUSPICIOUSNESS
                 table += subject_part
             else:
                 table += " & " * 8
@@ -201,22 +208,22 @@ def write_tex(results, best_for_each_metric):
 def analyze(results):
     """analyze bests for the various metrics and report highest p-value"""
     best_for_each_metric = {
-        CORRELATION: dict(),
+        SUSPICIOUSNESS: dict(),
         LOCALIZATION: dict(),
     }
     for metric in METRICS:
-        best_for_each_metric[CORRELATION][metric] = dict()
+        best_for_each_metric[SUSPICIOUSNESS][metric] = dict()
         best_for_each_metric[LOCALIZATION][metric] = dict()
-        for correlation in CORRELATIONS:
+        for correlation in AGGREGATES:
             bests = dict()
             for feature in FEATURES:
-                avg = results[CORRELATION][feature][metric][correlation][AVG]
+                avg = results[SUSPICIOUSNESS][feature][metric][correlation][AVG]
                 if avg in bests:
                     bests[avg].append(feature)
                 else:
                     bests[avg] = [feature]
             bests = sorted([(score, bests[score]) for score in bests], reverse=True)
-            best_for_each_metric[CORRELATION][metric][correlation] = bests
+            best_for_each_metric[SUSPICIOUSNESS][metric][correlation] = bests
         for scenario in SCENARIOS:
             best_for_each_metric[LOCALIZATION][metric][scenario] = dict()
             for localization, comp in zip(LOCALIZATIONS, LOCALIZATION_COMP):
@@ -261,10 +268,10 @@ def write_plot(plot, results, best_for_each_metric, n=5):
     plots_dir = Path("plots")
     plots_dir.mkdir(exist_ok=True)
     plot_parts = plot.split(",")
-    if plot_parts[0] == CORRELATION:
+    if plot_parts[0] == SUSPICIOUSNESS:
         _, metric, correlation = plot_parts
         features = list()
-        for score, fs in best_for_each_metric[CORRELATION][metric][correlation]:
+        for score, fs in best_for_each_metric[SUSPICIOUSNESS][metric][correlation]:
             for f in fs:
                 features.append(f)
                 if len(features) >= n:
@@ -272,7 +279,7 @@ def write_plot(plot, results, best_for_each_metric, n=5):
             if len(features) >= n:
                 break
         data = [
-            results[CORRELATION][feature][metric][correlation][ALL]
+            results[SUSPICIOUSNESS][feature][metric][correlation][ALL]
             for feature in features
         ]
         plt.boxplot(data, tick_labels=[tex_translation[f] for f in features])

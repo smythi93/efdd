@@ -75,13 +75,13 @@ def analyze_project(project: Project, analysis_file: os.PathLike) -> Analyzer:
     return analyzer
 
 
-def analyze(project_name, bug_id, start: int = None, end: int = None):
+def get_analysis(project_name, bug_id, start: int = None, end: int = None):
     for project in t4p.get_projects(project_name, bug_id):
         if start is not None and project.bug_id < start:
             continue
         if end is not None and project.bug_id > end:
             continue
-        LOGGER(project)
+        LOGGER.info(project)
         if (
             project.test_status_buggy != TestStatus.FAILING
             or project.test_status_fixed != TestStatus.PASSING

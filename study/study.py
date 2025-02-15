@@ -5,9 +5,12 @@ from pathlib import Path
 
 import sflkit.logger
 
-from utils.analyze import analyze
+from utils.analyze import get_analysis
 from utils.check import check
+from utils.events import get_events
 from utils.interpret import interpret
+from utils.metrics import get_metrics
+from utils.summarize import summarize
 
 
 def parse_args(*args: str):
@@ -48,13 +51,31 @@ def parse_args(*args: str):
         "-d", default=None, dest="directory", help="the directory to check"
     )
 
+    commands.add_parser(
+        "summarize",
+        description="The summarize command summarizes the results of the study.",
+        help="execute the summarization of the study results",
+    )
+
     analyze_parser = commands.add_parser(
         "analyze",
         description="The analyze command analyzes the projects by deriving the analysis objects for the projects.",
         help="execute the analysis of the projects",
     )
 
-    for parser in (analyze_parser,):
+    events_parser = commands.add_parser(
+        "events",
+        description="The events command generates the events for the projects.",
+        help="execute the generation of the events for the projects",
+    )
+
+    metrics_parser = commands.add_parser(
+        "metrics",
+        description="The metrics command calculates the metrics for the projects.",
+        help="execute the calculation of the metrics for the projects",
+    )
+
+    for parser in (analyze_parser, events_parser, metrics_parser):
         parser.add_argument(
             "-p", required=True, dest="project_name", help="project name"
         )
@@ -80,8 +101,14 @@ def main(*args: str, stdout=sys.stdout, stderr=sys.stderr):
         interpret(args.tex, args.plots, args.n)
     elif args.command == "check":
         check(args.directory)
+    elif args.command == "summarize":
+        summarize()
     elif args.command == "analyze":
-        analyze(args.project_name, args.bug_id, args.start, args.end)
+        get_analysis(args.project_name, args.bug_id, args.start, args.end)
+    elif args.command == "events":
+        get_events(args.project_name, args.bug_id, args.start, args.end)
+    elif args.command == "metrics":
+        get_metrics(args.project_name, args.bug_id, args.start, args.end)
     else:
         raise ValueError(f"Unknown command: {args.command}")
 

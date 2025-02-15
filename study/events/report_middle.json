@@ -1,0 +1,26 @@
+{
+  "middle_1": {
+    "status": "running",
+    "time": {
+      "checkout": 0.19411015510559082,
+      "instrument": 7.543325185775757,
+      "test": 3.168426990509033
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "middle_2": {
+    "status": "running",
+    "time": {
+      "checkout": 0.18288397789001465,
+      "instrument": 7.728611946105957,
+      "test": 3.433445692062378
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}

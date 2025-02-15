@@ -191,3 +191,6 @@ evaluation/mapping_*.json
 evaluation/middle.json
 evaluation/middle.py
 evaluation/middle_access.py
+study/sflkit_events
+study/mappings
+study/analysis

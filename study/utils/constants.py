@@ -20,6 +20,7 @@ METRICS = [
     Spectrum.GP13,
 ]
 
+SUSPICIOUSNESS = "suspiciousness"
 CORRELATION = "correlation"
 LOCALIZATION = "localization"
 BEST = "best"
@@ -86,7 +87,7 @@ LOCALIZATION_COMP = [
     False,
 ]
 
-CORRELATIONS = [BEST, MEAN, MEDIAN, WORST]
+AGGREGATES = [BEST, MEAN, MEDIAN, WORST]
 
 SUBJECTS = [
     "ansible",
@@ -116,3 +117,7 @@ AVG = "avg"
 ALL = "all"
 
 SUMMARY = Path("summary.json")
+
+TRUE = "true"
+FALSE = "false"
+TOTAL = "total"

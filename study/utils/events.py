@@ -11,9 +11,11 @@ from tests4py import sfl
 from tests4py.projects import TestStatus
 
 from utils.constants import EVENT_REPORT_DIR, MAPPINGS_DIR, TMP, EVENTS_DIR
+from utils.logger import LOGGER
 
 
-def events(project_name, bug_id, start: int = None, end: int = None):
+def get_events(project_name, bug_id, start: int = None, end: int = None):
+    os.makedirs(EVENT_REPORT_DIR, exist_ok=True)
     report_file = EVENT_REPORT_DIR / f"report_{project_name}.json"
     if os.path.exists(report_file):
         with open(report_file, "r") as f:
@@ -27,7 +29,7 @@ def events(project_name, bug_id, start: int = None, end: int = None):
         if end is not None and project.bug_id > end:
             continue
         identifier = project.get_identifier()
-        print(identifier)
+        LOGGER.info(identifier)
         if (
             identifier in report
             and "check" in report[identifier]
@@ -114,5 +116,5 @@ def events(project_name, bug_id, start: int = None, end: int = None):
         else:
             report[identifier]["check"] = "failed"
 
-    with open(f"report_{project_name}.json", "w") as f:
+    with open(report_file, "w") as f:
         json.dump(report, f, indent=2)
