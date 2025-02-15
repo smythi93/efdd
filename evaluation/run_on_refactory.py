@@ -144,15 +144,13 @@ def run_on_example(
         name = f"wrong_{question}_{identifier:03d}"
         path, eval_path = QUESTIONS[question]
         file: Path = path / CODE / "wrong" / f"{name}.py"
-        wd: Path = Path("tmp") / name
-        shutil.rmtree(wd, ignore_errors=True)
-        wd.mkdir(parents=True, exist_ok=True)
-        shutil.copy(ACCESS, wd / TMP_ACCESS)
-        os.chdir(wd)
-        mapping_path = Path(f"mapping_{time.time()}.json")
-        if (
-            file.exists()
-        ):  # and verify_example(question, file, path / ANS, limit=limit):
+        if file.exists():
+            wd: Path = Path("tmp") / (name + "_functions" if functions else name)
+            shutil.rmtree(wd, ignore_errors=True)
+            wd.mkdir(parents=True, exist_ok=True)
+            shutil.copy(ACCESS, wd / TMP_ACCESS)
+            os.chdir(wd)
+            mapping_path = Path(f"mapping_{time.time()}.json")
             LOGGER.info(f"Start evaluation of {name}")
             if functions:
                 instrument(file, DST, mapping_path, events=["FUNCTION_ENTER"])
