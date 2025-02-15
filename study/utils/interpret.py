@@ -6,6 +6,21 @@ from sflkit.analysis.analysis_type import AnalysisType
 from sflkit.analysis.spectra import Spectrum
 from sflkit.evaluation import Scenario
 
+from utils.constants import (
+    FEATURES,
+    UNIFIED,
+    CORRELATION,
+    LOCALIZATION,
+    CORRELATIONS,
+    LOCALIZATIONS,
+    LOCALIZATION_COMP,
+    METRICS,
+    SCENARIOS,
+    AVG,
+    ALL,
+    SUMMARY,
+)
+
 tex_translation = {
     Spectrum.Tarantula.__name__: "\\TARANTULA{}",
     Spectrum.Ochiai.__name__: "\\OCHIAI{}",
@@ -36,65 +51,6 @@ tex_translation = {
     "unified_avg": "$\\text{Unified}_\\text{mean}$",
 }
 
-feature_order = [
-    AnalysisType.LINE.name,
-    AnalysisType.BRANCH.name,
-    AnalysisType.FUNCTION.name,
-    AnalysisType.FUNCTION_ERROR.name,
-    AnalysisType.DEF_USE.name,
-    AnalysisType.LOOP.name,
-    AnalysisType.CONDITION.name,
-    AnalysisType.SCALAR_PAIR.name,
-    AnalysisType.VARIABLE.name,
-    AnalysisType.RETURN.name,
-    AnalysisType.NONE.name,
-    AnalysisType.LENGTH.name,
-    AnalysisType.EMPTY_STRING.name,
-    AnalysisType.ASCII_STRING.name,
-    AnalysisType.DIGIT_STRING.name,
-    AnalysisType.SPECIAL_STRING.name,
-    AnalysisType.EMPTY_BYTES.name,
-]
-
-unified_order = [
-    "unified_max",
-    "unified_avg",
-]
-
-scenario_order = [
-    Scenario.BEST_CASE.value,
-    Scenario.AVG_CASE.value,
-    Scenario.WORST_CASE.value,
-]
-
-metric_order = [
-    Spectrum.Tarantula.__name__,
-    Spectrum.Ochiai.__name__,
-    Spectrum.DStar.__name__,
-    Spectrum.Naish2.__name__,
-    Spectrum.GP13.__name__,
-]
-
-localization_order = [
-    "top-1",
-    "top-5",
-    "top-10",
-    "top-200",
-    "exam",
-    "wasted-effort",
-]
-
-localization_comp = [
-    True,
-    True,
-    True,
-    True,
-    False,
-    False,
-]
-
-correlation_order = ["best", "mean", "median", "worst"]
-
 
 def get_localization_tex_table(results, best_for_each_metric):
     table = (
@@ -121,30 +77,30 @@ def get_localization_tex_table(results, best_for_each_metric):
         + "\\\\\\midrule\n"
     )
     unified_table = table[:]
-    for feature in feature_order + unified_order:
-        t = table if feature in feature_order else unified_table
-        for metric in metric_order:
-            if metric == metric_order[0]:
-                t += f"    \\multirow{3}*{{{tex_translation[feature]}}}"
+    for feature in FEATURES + UNIFIED:
+        t = table if feature in FEATURES else unified_table
+        for metric in METRICS:
+            if metric == METRICS[0]:
+                t += f"    \\multirow{{{len(METRICS)}}}*{{{tex_translation[feature]}}}"
             else:
                 t += "    "
             t += f" & {tex_translation[metric]}"
-            for scenario in scenario_order:
-                for localization in localization_order:
-                    if feature in feature_order:
+            for scenario in SCENARIOS:
+                for localization in LOCALIZATIONS:
+                    if feature in FEATURES:
                         text_bf = (
                             feature
-                            in best_for_each_metric["localization"][metric][scenario][
+                            in best_for_each_metric[LOCALIZATION][metric][scenario][
                                 localization
                             ][0][1]
                         )
                     else:
                         text_bf = (
                             feature
-                            in best_for_each_metric["localization"][metric][scenario][
+                            in best_for_each_metric[LOCALIZATION][metric][scenario][
                                 f"unified_{localization}"
                             ][0][1]
-                            and best_for_each_metric["localization"][metric][scenario][
+                            and best_for_each_metric[LOCALIZATION][metric][scenario][
                                 f"unified_{localization}_wins"
                             ]
                         )
@@ -153,20 +109,20 @@ def get_localization_tex_table(results, best_for_each_metric):
                         t += "\\textbf{\\color{deepblue}"
                     if localization.startswith("top"):
                         t += (
-                            f"{results['localization'][feature][metric][scenario][localization]['avg'] * 100:.1f}"
+                            f"{results[LOCALIZATION][feature][metric][scenario][localization][AVG] * 100:.1f}"
                             "\\%"
                         )
                     elif localization == "exam":
-                        t += f"{results['localization'][feature][metric][scenario][localization]['avg']:.3f}"
+                        t += f"{results[LOCALIZATION][feature][metric][scenario][localization][AVG]:.3f}"
                     else:
                         t += (
-                            f"{results['localization'][feature][metric][scenario][localization]['avg'] / 1000:.1f}"
+                            f"{results[LOCALIZATION][feature][metric][scenario][localization][AVG] / 1000:.1f}"
                             f"k"
                         )
                     if text_bf:
                         t += "}"
             t += " \\\\\n"
-        if feature != unified_order[-1] and feature != feature_order[-1]:
+        if feature != UNIFIED[-1] and feature != FEATURES[-1]:
             t += "\\addlinespace[0.5em]\n"
 
     table += "\\bottomrule\n\\end{tabular}\n"
@@ -192,27 +148,29 @@ def get_correlation_tex_table(results, best_for_each_metric):
         * 2
         + "\\\\\\midrule\n"
     )
-    for feature in feature_order:
-        for metric in metric_order:
-            if metric == metric_order[0]:
-                table += f"    \\multirow{3}*{{{tex_translation[feature]}}}"
+    for feature in FEATURES:
+        for metric in METRICS:
+            if metric == METRICS[0]:
+                table += (
+                    f"    \\multirow{{{len(METRICS)}}}*{{{tex_translation[feature]}}}"
+                )
             else:
                 table += "    "
             table += f" & {tex_translation[metric]}"
-            for correlation in correlation_order:
+            for correlation in CORRELATIONS:
                 text_bf = (
                     feature
-                    in best_for_each_metric["correlation"][metric][correlation][0][1]
+                    in best_for_each_metric[CORRELATION][metric][correlation][0][1]
                 )
                 table += " & "
                 if text_bf:
                     table += "\\textbf{\\color{deepblue}"
                 table += (
-                    f"{results['correlation'][feature][metric][correlation]['avg']:.3f}"
+                    f"{results[CORRELATION][feature][metric][correlation][AVG]:.3f}"
                 )
                 if text_bf:
                     table += "}"
-            if metric == metric_order[0]:
+            if metric == METRICS[0]:
                 subject_part = ""
                 # TODO CORRELATION
                 table += subject_part
@@ -243,36 +201,32 @@ def write_tex(results, best_for_each_metric):
 def analyze(results):
     """analyze bests for the various metrics and report highest p-value"""
     best_for_each_metric = {
-        "correlation": dict(),
-        "localization": dict(),
-        "relevance": dict(),
+        CORRELATION: dict(),
+        LOCALIZATION: dict(),
     }
-    for metric in metric_order:
-        best_for_each_metric["correlation"][metric] = dict()
-        best_for_each_metric["localization"][metric] = dict()
-        for correlation in correlation_order:
+    for metric in METRICS:
+        best_for_each_metric[CORRELATION][metric] = dict()
+        best_for_each_metric[LOCALIZATION][metric] = dict()
+        for correlation in CORRELATIONS:
             bests = dict()
-            for feature in feature_order:
-                avg = results["correlation"][feature][metric][correlation]["avg"]
+            for feature in FEATURES:
+                avg = results[CORRELATION][feature][metric][correlation][AVG]
                 if avg in bests:
                     bests[avg].append(feature)
                 else:
                     bests[avg] = [feature]
-                for feature_2 in feature_order:
-                    if feature == feature_2:
-                        continue
             bests = sorted([(score, bests[score]) for score in bests], reverse=True)
-            best_for_each_metric["correlation"][metric][correlation] = bests
-        for scenario in scenario_order:
-            best_for_each_metric["localization"][metric][scenario] = dict()
-            for localization, comp in zip(localization_order, localization_comp):
+            best_for_each_metric[CORRELATION][metric][correlation] = bests
+        for scenario in SCENARIOS:
+            best_for_each_metric[LOCALIZATION][metric][scenario] = dict()
+            for localization, comp in zip(LOCALIZATIONS, LOCALIZATION_COMP):
                 bests = dict()
                 bests_unified = dict()
-                for feature in feature_order + unified_order:
-                    avg = results["localization"][feature][metric][scenario][
+                for feature in FEATURES + UNIFIED:
+                    avg = results[LOCALIZATION][feature][metric][scenario][
                         localization
-                    ]["avg"]
-                    if feature in ["unified_max", "unified_avg"]:
+                    ][AVG]
+                    if feature in UNIFIED:
                         if avg in bests_unified:
                             bests_unified[avg].append(feature)
                         else:
@@ -282,21 +236,18 @@ def analyze(results):
                             bests[avg].append(feature)
                         else:
                             bests[avg] = [feature]
-                    for feature_2 in unified_order:
-                        if feature == feature_2:
-                            continue
                 bests = sorted([(score, bests[score]) for score in bests], reverse=comp)
                 bests_unified = sorted(
                     [(score, bests_unified[score]) for score in bests_unified],
                     reverse=comp,
                 )
-                best_for_each_metric["localization"][metric][scenario][
+                best_for_each_metric[LOCALIZATION][metric][scenario][
                     localization
                 ] = bests
-                best_for_each_metric["localization"][metric][scenario][
+                best_for_each_metric[LOCALIZATION][metric][scenario][
                     f"unified_{localization}"
                 ] = bests_unified
-                best_for_each_metric["localization"][metric][scenario][
+                best_for_each_metric[LOCALIZATION][metric][scenario][
                     f"unified_{localization}_wins"
                 ] = (
                     bests_unified[0][0] >= bests[0][0]
@@ -310,10 +261,10 @@ def write_plot(plot, results, best_for_each_metric, n=5):
     plots_dir = Path("plots")
     plots_dir.mkdir(exist_ok=True)
     plot_parts = plot.split(",")
-    if plot_parts[0] == "correlation":
+    if plot_parts[0] == CORRELATION:
         _, metric, correlation = plot_parts
         features = list()
-        for score, fs in best_for_each_metric["correlation"][metric][correlation]:
+        for score, fs in best_for_each_metric[CORRELATION][metric][correlation]:
             for f in fs:
                 features.append(f)
                 if len(features) >= n:
@@ -321,16 +272,16 @@ def write_plot(plot, results, best_for_each_metric, n=5):
             if len(features) >= n:
                 break
         data = [
-            results["correlation"][feature][metric][correlation]["all"]
+            results[CORRELATION][feature][metric][correlation][ALL]
             for feature in features
         ]
         plt.boxplot(data, tick_labels=[tex_translation[f] for f in features])
         if any([any([d > 5 for d in ds]) for ds in data]):
             plt.ylim(0, 5)
-    elif plot_parts[0] == "localization":
+    elif plot_parts[0] == LOCALIZATION:
         _, metric, scenario, localization = plot_parts
         features = list()
-        for score, fs in best_for_each_metric["localization"][metric][scenario][
+        for score, fs in best_for_each_metric[LOCALIZATION][metric][scenario][
             localization
         ]:
             for f in fs:
@@ -338,7 +289,7 @@ def write_plot(plot, results, best_for_each_metric, n=5):
                 if len(features) >= n:
                     break
         data = [
-            results["localization"][feature][metric][scenario][localization]["all"]
+            results[LOCALIZATION][feature][metric][scenario][localization][ALL]
             for feature in features
         ]
         plt.boxplot(data, tick_labels=[tex_translation[f] for f in features])
@@ -347,11 +298,9 @@ def write_plot(plot, results, best_for_each_metric, n=5):
 
 
 def interpret(tex=False, plots=None, n=5):
-    summary = Path("summary.json")
-    summary_behavior = Path("summary_behavior.json")
-    if not summary.exists() or not summary_behavior.exists():
+    if not SUMMARY.exists():
         return
-    with summary.open() as f:
+    with SUMMARY.open() as f:
         results = json.load(f)
     best_for_each_metric = analyze(results)
     if tex:

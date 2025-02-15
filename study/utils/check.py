@@ -1,14 +1,16 @@
 import json
 import os
 import re
-import sys
+
+from utils.logger import LOGGER
+from utils.constants import EVENT_REPORT_DIR
 
 PATTERN = re.compile(r"report_(?P<name>[^.]*)\.json")
 
 
-def main(directory=None):
+def check(directory=None):
     if directory is None:
-        directory = os.getcwd()
+        directory = EVENT_REPORT_DIR
     skipped = list()
     functions = list()
     errors = list()
@@ -65,18 +67,11 @@ def main(directory=None):
     }
     total = len(skipped) + len(functions) + len(check_failed) + len(errors)
     subjects = len(functions) + len(check_failed) + len(errors)
-    print(f"Total: {total}")
-    print(f"Skipped: {len(skipped)}")
-    print(f"Investigate: {subjects}")
-    print(f"Errors: {len(errors)}")
-    print(f"Check failed: {len(check_failed)}")
-    print(f"Functional: {len(functions)}")
+    LOGGER.info(f"Total: {total}")
+    LOGGER.info(f"Skipped: {len(skipped)}")
+    LOGGER.info(f"Investigate: {subjects}")
+    LOGGER.info(f"Errors: {len(errors)}")
+    LOGGER.info(f"Check failed: {len(check_failed)}")
+    LOGGER.info(f"Functional: {len(functions)}")
     with open("need_investigation.json", "w") as f:
         json.dump(need_investigation, f, indent=2)
-
-
-if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        main(sys.argv[1])
-    else:
-        main()

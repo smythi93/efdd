@@ -1,8 +1,13 @@
 import argparse
 import os
 import sys
+from pathlib import Path
 
 import sflkit.logger
+
+from utils.analyze import analyze
+from utils.check import check
+from utils.interpret import interpret
 
 
 def parse_args(*args: str):
@@ -34,6 +39,33 @@ def parse_args(*args: str):
         nargs="+",
     )
 
+    check_parser = commands.add_parser(
+        "check",
+        description="The check command checks if all subjects work.",
+        help="execute a check of the subjects",
+    )
+    check_parser.add_argument(
+        "-d", default=None, dest="directory", help="the directory to check"
+    )
+
+    analyze_parser = commands.add_parser(
+        "analyze",
+        description="The analyze command analyzes the projects by deriving the analysis objects for the projects.",
+        help="execute the analysis of the projects",
+    )
+
+    for parser in (analyze_parser,):
+        parser.add_argument(
+            "-p", required=True, dest="project_name", help="project name"
+        )
+        parser.add_argument("-i", default=None, type=int, dest="bug_id", help="bug id")
+        parser.add_argument(
+            "-s", default=None, type=int, dest="start", help="start bug id (inclusive)"
+        )
+        parser.add_argument(
+            "-e", default=None, type=int, dest="end", help="end bug id (inclusive)"
+        )
+
     return arg_parser.parse_args(args or sys.argv[1:])
 
 
@@ -44,9 +76,18 @@ def main(*args: str, stdout=sys.stdout, stderr=sys.stderr):
         sys.stderr = stderr
     sflkit.logger.LOGGER.disabled = True
     args = parse_args(*args)
+    if args.command == "interpret":
+        interpret(args.tex, args.plots, args.n)
+    elif args.command == "check":
+        check(args.directory)
+    elif args.command == "analyze":
+        analyze(args.project_name, args.bug_id, args.start, args.end)
+    else:
+        raise ValueError(f"Unknown command: {args.command}")
 
 
 if __name__ == "__main__":
+    assert Path.cwd() == Path(__file__).parent
     if "-O" in sys.argv:
         sys.argv.remove("-O")
         os.execl(sys.executable, sys.executable, "-O", *sys.argv)
