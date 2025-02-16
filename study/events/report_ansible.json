@@ -1,0 +1,209 @@
+{
+  "ansible_1": {
+    "status": "running",
+    "time": {
+      "checkout": 1.6820037364959717,
+      "instrument": 10.015904903411865,
+      "test": 74.13707566261292
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_2": {
+    "status": "running",
+    "time": {
+      "checkout": 1.7221224308013916,
+      "instrument": 10.439976692199707,
+      "test": 46.58135747909546
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_3": {
+    "status": "running",
+    "time": {
+      "checkout": 1.7676503658294678,
+      "instrument": 29.7866427898407,
+      "test": 27.90054726600647
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_4": {
+    "status": "running",
+    "time": {
+      "checkout": 1.6858558654785156,
+      "instrument": 14.08298134803772,
+      "test": 371.576208114624
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_5": {
+    "status": "running",
+    "time": {
+      "checkout": 1.627676010131836,
+      "instrument": 29.995903491973877,
+      "test": 18.409505128860474
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_6": {
+    "status": "running",
+    "time": {
+      "checkout": 2.9808132648468018,
+      "instrument": 14.101306438446045,
+      "test": 54.7296667098999
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_7": {
+    "status": "skipped"
+  },
+  "ansible_8": {
+    "status": "running",
+    "time": {
+      "checkout": 3.26841402053833,
+      "instrument": 127.1749222278595,
+      "test": 11.304760217666626
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_9": {
+    "status": "running",
+    "time": {
+      "checkout": 3.321826219558716,
+      "instrument": 5765.630518436432,
+      "test": 8.516546487808228
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_10": {
+    "status": "running",
+    "time": {
+      "checkout": 3.2773773670196533,
+      "instrument": 6342.276204586029,
+      "test": 22.977205514907837
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_11": {
+    "status": "running",
+    "time": {
+      "checkout": 3.3436455726623535,
+      "instrument": 6813.988370418549,
+      "test": 67.24742603302002
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_12": {
+    "status": "running",
+    "time": {
+      "checkout": 3.297118663787842,
+      "instrument": 139.33764219284058,
+      "test": 145.9577329158783
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_13": {
+    "status": "running",
+    "time": {
+      "checkout": 3.3285608291625977,
+      "instrument": 22.380651473999023,
+      "test": 127.53724694252014
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_14": {
+    "status": "running",
+    "time": {
+      "checkout": 3.1434123516082764,
+      "instrument": 14.0541353225708,
+      "test": 45.258320331573486
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_15": {
+    "status": "running",
+    "time": {
+      "checkout": 3.3372111320495605,
+      "instrument": 6602.395064353943,
+      "test": 7.0037682056427
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_16": {
+    "status": "running",
+    "time": {
+      "checkout": 2.9653162956237793,
+      "instrument": 178.88281106948853,
+      "test": 8.503116846084595
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_17": {
+    "status": "running",
+    "time": {
+      "checkout": 2.96639347076416,
+      "instrument": 210.24372243881226,
+      "test": 46.671783447265625
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "ansible_18": {
+    "status": "running",
+    "time": {
+      "checkout": 1.6730332374572754,
+      "instrument": 27.92582869529724,
+      "test": 27.970218896865845
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}
