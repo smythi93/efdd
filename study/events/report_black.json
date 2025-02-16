@@ -5,9 +5,9 @@
   "black_2": {
     "status": "running",
     "time": {
-      "checkout": 0.14940261840820312,
-      "instrument": 16.610080242156982,
-      "test": 1.303096055984497
+      "checkout": 0.144850492477417,
+      "instrument": 16.758285522460938,
+      "test": 1.287865161895752
     },
     "checkout": "successful",
     "build": "successful",
