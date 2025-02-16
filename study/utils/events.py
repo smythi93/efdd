@@ -49,6 +49,7 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
 
         report[identifier]["time"] = dict()
 
+        LOGGER.info(f"Checking out project {project}")
         start_time = time.time()
         r = t4p.checkout(project)
         report[identifier]["time"]["checkout"] = time.time() - start_time
@@ -57,11 +58,13 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
         else:
             report[identifier]["checkout"] = "failed"
             report[identifier]["error"] = traceback.format_exception(r.raised)
+            LOGGER.error(report[identifier]["error"])
             continue
         original_checkout = r.location
 
         mapping = MAPPINGS_DIR / f"{project}.json"
         sfl_path = TMP / f"sfl_{identifier}"
+        LOGGER.info(f"Instrumenting project {project}")
         start_time = time.time()
         r = sfl.sflkit_instrument(sfl_path, project, mapping=mapping)
         report[identifier]["time"]["instrument"] = time.time() - start_time
@@ -70,6 +73,7 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
         else:
             report[identifier]["build"] = "failed"
             report[identifier]["error"] = traceback.format_exception(r.raised)
+            LOGGER.error(report[identifier]["error"])
             continue
 
         with open(mapping, "r") as f:
@@ -88,6 +92,7 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
             Removing the original version fixes this problem.
             """
             shutil.rmtree(original_checkout, ignore_errors=True)
+        LOGGER.info(f"Running project {project}")
         start_time = time.time()
         r = sfl.sflkit_unittest(
             sfl_path, relevant_tests=True, all_tests=False, include_suffix=True
@@ -98,6 +103,7 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
         else:
             report[identifier]["test"] = "failed"
             report[identifier]["error"] = traceback.format_exception(r.raised)
+            LOGGER.error(report[identifier]["error"])
             continue
 
         checks = True

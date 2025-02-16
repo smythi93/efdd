@@ -9,7 +9,7 @@ from utils.analyze import get_analysis
 from utils.check import check
 from utils.events import get_events
 from utils.interpret import interpret
-from utils.metrics import get_metrics
+from utils.evaluate import evaluate
 from utils.summarize import summarize
 
 
@@ -70,7 +70,7 @@ def parse_args(*args: str):
     )
 
     metrics_parser = commands.add_parser(
-        "metrics",
+        "evaluate",
         description="The metrics command calculates the metrics for the projects.",
         help="execute the calculation of the metrics for the projects",
     )
@@ -107,8 +107,8 @@ def main(*args: str, stdout=sys.stdout, stderr=sys.stderr):
         get_analysis(args.project_name, args.bug_id, args.start, args.end)
     elif args.command == "events":
         get_events(args.project_name, args.bug_id, args.start, args.end)
-    elif args.command == "metrics":
-        get_metrics(args.project_name, args.bug_id, args.start, args.end)
+    elif args.command == "evaluate":
+        evaluate(args.project_name, args.bug_id, args.start, args.end)
     else:
         raise ValueError(f"Unknown command: {args.command}")
 

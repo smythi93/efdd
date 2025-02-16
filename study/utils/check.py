@@ -43,7 +43,6 @@ def check(directory=None):
                 ):
                     check_failed.append(identifier)
                     buggy = list()
-                    fixed = list()
                     empty = False
                     for key, value in report[identifier].items():
                         if value == "empty":
@@ -51,19 +50,14 @@ def check(directory=None):
                         if value == "not_found":
                             if key.startswith("bug:"):
                                 buggy.append(key[4:])
-                            if key.startswith("fix:"):
-                                fixed.append(key[4:])
                     if empty:
                         empty_passing.append(identifier)
                     if buggy:
                         missing_bug.append((identifier, buggy))
-                    if fixed:
-                        missing_fixed.append((identifier, fixed))
     need_investigation = {
         "errors": errors,
         "missing_bug": missing_bug,
         "empty_passing": empty_passing,
-        "missing_fixed": missing_fixed,
     }
     total = len(skipped) + len(functions) + len(check_failed) + len(errors)
     subjects = len(functions) + len(check_failed) + len(errors)

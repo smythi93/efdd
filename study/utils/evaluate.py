@@ -97,7 +97,7 @@ def get_results_for_type(
     return type_results
 
 
-def get_metrics(project_name, bug_id, start: int = None, end: int = None):
+def evaluate(project_name, bug_id, start: int = None, end: int = None):
     Language.PYTHON.setup()
     os.makedirs(RESULTS_DIR, exist_ok=True)
     for project in t4p.get_projects(project_name, bug_id):
