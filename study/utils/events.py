@@ -121,6 +121,6 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
             report[identifier]["check"] = "successful"
         else:
             report[identifier]["check"] = "failed"
-
+        LOGGER.info(f"Finished project {project}")
     with open(report_file, "w") as f:
         json.dump(report, f, indent=2)
