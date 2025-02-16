@@ -1,0 +1,360 @@
+{
+  "luigi_1": {
+    "status": "running",
+    "time": {
+      "checkout": 0.3130061626434326,
+      "instrument": 44.812182903289795,
+      "test": 317.9898021221161
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_2": {
+    "status": "skipped"
+  },
+  "luigi_3": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1479039192199707,
+      "instrument": 42.22172141075134,
+      "test": 308.1242301464081
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_4": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1374061107635498,
+      "instrument": 39.643731355667114,
+      "test": 7.936660528182983
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_5": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13672924041748047,
+      "instrument": 37.87627077102661,
+      "test": 44.60678482055664
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_6": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1368541717529297,
+      "instrument": 38.16809916496277,
+      "test": 292.5894012451172
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_7": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13661479949951172,
+      "instrument": 39.51768684387207,
+      "test": 235.71201705932617
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_8": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13610410690307617,
+      "instrument": 40.656835079193115,
+      "test": 4.332157135009766
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_9": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13591265678405762,
+      "instrument": 35.44123125076294,
+      "test": 228.35234212875366
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_10": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13371539115905762,
+      "instrument": 40.34802556037903,
+      "test": 20.12700891494751
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_11": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1331038475036621,
+      "instrument": 32.46621346473694,
+      "test": 304.63615322113037
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_12": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13225078582763672,
+      "instrument": 41.824703216552734,
+      "test": 13.110944271087646
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_13": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13381290435791016,
+      "instrument": 32.08899211883545,
+      "test": 29.26315689086914
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_14": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13739252090454102,
+      "instrument": 31.72545862197876,
+      "test": 216.106205701828
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_15": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13625836372375488,
+      "instrument": 43.7092661857605,
+      "test": 211.92545986175537
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_16": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13628077507019043,
+      "instrument": 30.577219009399414,
+      "test": 164.78181266784668
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_17": {
+    "status": "skipped"
+  },
+  "luigi_18": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1344773769378662,
+      "instrument": 30.07953715324402,
+      "test": 155.31494545936584
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_19": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13631820678710938,
+      "instrument": 30.75286102294922,
+      "test": 151.01586151123047
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_20": {
+    "status": "skipped"
+  },
+  "luigi_21": {
+    "status": "skipped"
+  },
+  "luigi_22": {
+    "status": "running",
+    "time": {
+      "checkout": 0.11402082443237305,
+      "instrument": 43.89247179031372,
+      "test": 7.794122695922852
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_23": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1150672435760498,
+      "instrument": 30.540462255477905,
+      "test": 69.69591665267944
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_24": {
+    "status": "skipped"
+  },
+  "luigi_25": {
+    "status": "skipped"
+  },
+  "luigi_26": {
+    "status": "running",
+    "time": {
+      "checkout": 0.11122488975524902,
+      "instrument": 27.87272334098816,
+      "test": 2.4943909645080566
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:test/contrib/hadoop_jar_test.py::HadoopJarJobTaskTest::test_missing_jar": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_27": {
+    "status": "running",
+    "time": {
+      "checkout": 0.11682534217834473,
+      "instrument": 28.32391357421875,
+      "test": 90.93992304801941
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_28": {
+    "status": "running",
+    "time": {
+      "checkout": 0.11726903915405273,
+      "instrument": 27.546969175338745,
+      "test": 3.555957555770874
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:test/contrib/hive_test.py::HiveCommandClientTest::test_table_exists": "not_found",
+    "bug:test/contrib/hive_test.py::HiveCommandClientTest::test_apacheclient_table_exists": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_29": {
+    "status": "running",
+    "time": {
+      "checkout": 0.10942316055297852,
+      "instrument": 45.67690587043762,
+      "test": 3.579019546508789
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "luigi_30": {
+    "status": "running",
+    "time": {
+      "checkout": 0.10697245597839355,
+      "instrument": 27.715237379074097,
+      "test": 8.309741735458374
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_31": {
+    "status": "running",
+    "time": {
+      "checkout": 0.12453985214233398,
+      "instrument": 26.966646194458008,
+      "test": 86.40115261077881
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_32": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1080625057220459,
+      "instrument": 27.405577182769775,
+      "test": 6.285823106765747
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "luigi_33": {
+    "status": "running",
+    "time": {
+      "checkout": 0.10239577293395996,
+      "instrument": 26.077933311462402,
+      "test": 93.30342411994934
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}
