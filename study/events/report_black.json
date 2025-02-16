@@ -5,9 +5,9 @@
   "black_2": {
     "status": "running",
     "time": {
-      "checkout": 0.20573091506958008,
-      "instrument": 19.623148679733276,
-      "test": 1.3178911209106445
+      "checkout": 0.14821648597717285,
+      "instrument": 16.6112961769104,
+      "test": 1.3069655895233154
     },
     "checkout": "successful",
     "build": "successful",
@@ -19,9 +19,9 @@
   "black_3": {
     "status": "running",
     "time": {
-      "checkout": 0.13576173782348633,
-      "instrument": 19.805987119674683,
-      "test": 1.3177471160888672
+      "checkout": 0.1476459503173828,
+      "instrument": 32.737199783325195,
+      "test": 1.0472486019134521
     },
     "checkout": "successful",
     "build": "successful",
@@ -33,9 +33,9 @@
   "black_4": {
     "status": "running",
     "time": {
-      "checkout": 0.13401150703430176,
-      "instrument": 18.417362928390503,
-      "test": 1.2492320537567139
+      "checkout": 0.1435232162475586,
+      "instrument": 31.757959604263306,
+      "test": 1.018397569656372
     },
     "checkout": "successful",
     "build": "successful",
@@ -47,9 +47,9 @@
   "black_5": {
     "status": "running",
     "time": {
-      "checkout": 0.13300848007202148,
-      "instrument": 19.12183952331543,
-      "test": 1.187863826751709
+      "checkout": 0.1434774398803711,
+      "instrument": 31.12711763381958,
+      "test": 0.9895687103271484
     },
     "checkout": "successful",
     "build": "successful",
@@ -61,9 +61,9 @@
   "black_6": {
     "status": "running",
     "time": {
-      "checkout": 0.1325829029083252,
-      "instrument": 18.398748636245728,
-      "test": 1.2435235977172852
+      "checkout": 0.14169025421142578,
+      "instrument": 31.127846002578735,
+      "test": 1.0172655582427979
     },
     "checkout": "successful",
     "build": "successful",
@@ -76,9 +76,9 @@
   "black_7": {
     "status": "running",
     "time": {
-      "checkout": 0.13196396827697754,
-      "instrument": 18.632111310958862,
-      "test": 1.2246832847595215
+      "checkout": 0.13511133193969727,
+      "instrument": 32.27542805671692,
+      "test": 1.000579595565796
     },
     "checkout": "successful",
     "build": "successful",
@@ -90,9 +90,9 @@
   "black_8": {
     "status": "running",
     "time": {
-      "checkout": 0.131270170211792,
-      "instrument": 18.04166340827942,
-      "test": 1.2039151191711426
+      "checkout": 0.14168834686279297,
+      "instrument": 32.60051083564758,
+      "test": 0.9906752109527588
     },
     "checkout": "successful",
     "build": "successful",
@@ -104,9 +104,9 @@
   "black_9": {
     "status": "running",
     "time": {
-      "checkout": 0.12947440147399902,
-      "instrument": 18.783454656600952,
-      "test": 1.2261130809783936
+      "checkout": 0.13636231422424316,
+      "instrument": 30.667911291122437,
+      "test": 1.0082504749298096
     },
     "checkout": "successful",
     "build": "successful",
@@ -118,9 +118,9 @@
   "black_10": {
     "status": "running",
     "time": {
-      "checkout": 0.13207530975341797,
-      "instrument": 20.062954425811768,
-      "test": 1.215808391571045
+      "checkout": 0.13858556747436523,
+      "instrument": 32.14492154121399,
+      "test": 0.9552843570709229
     },
     "checkout": "successful",
     "build": "successful",
@@ -132,9 +132,9 @@
   "black_11": {
     "status": "running",
     "time": {
-      "checkout": 0.13251972198486328,
-      "instrument": 17.92933177947998,
-      "test": 1.2131175994873047
+      "checkout": 0.14070653915405273,
+      "instrument": 30.342305898666382,
+      "test": 0.9744644165039062
     },
     "checkout": "successful",
     "build": "successful",
@@ -146,9 +146,9 @@
   "black_12": {
     "status": "running",
     "time": {
-      "checkout": 0.13071560859680176,
-      "instrument": 17.95605969429016,
-      "test": 3.577354669570923
+      "checkout": 0.12929153442382812,
+      "instrument": 31.943037748336792,
+      "test": 0.9749462604522705
     },
     "checkout": "successful",
     "build": "successful",
@@ -160,9 +160,9 @@
   "black_13": {
     "status": "running",
     "time": {
-      "checkout": 0.13402390480041504,
-      "instrument": 17.599955797195435,
-      "test": 1.1610145568847656
+      "checkout": 0.14206862449645996,
+      "instrument": 30.64962935447693,
+      "test": 0.9348974227905273
     },
     "checkout": "successful",
     "build": "successful",
@@ -174,9 +174,9 @@
   "black_14": {
     "status": "running",
     "time": {
-      "checkout": 0.1273963451385498,
-      "instrument": 17.25154757499695,
-      "test": 1.165605068206787
+      "checkout": 0.14561176300048828,
+      "instrument": 33.39787411689758,
+      "test": 0.973705530166626
     },
     "checkout": "successful",
     "build": "successful",
@@ -188,9 +188,9 @@
   "black_15": {
     "status": "running",
     "time": {
-      "checkout": 0.1811826229095459,
-      "instrument": 19.852115631103516,
-      "test": 1.1654410362243652
+      "checkout": 0.13769960403442383,
+      "instrument": 30.05303931236267,
+      "test": 0.9360165596008301
     },
     "checkout": "successful",
     "build": "successful",
@@ -202,9 +202,9 @@
   "black_16": {
     "status": "running",
     "time": {
-      "checkout": 0.12921500205993652,
-      "instrument": 17.617250680923462,
-      "test": 1.1239984035491943
+      "checkout": 0.14093589782714844,
+      "instrument": 30.246445178985596,
+      "test": 0.9865138530731201
     },
     "checkout": "successful",
     "build": "successful",
@@ -216,9 +216,9 @@
   "black_17": {
     "status": "running",
     "time": {
-      "checkout": 0.10168981552124023,
-      "instrument": 15.531774044036865,
-      "test": 1.0898830890655518
+      "checkout": 0.10683226585388184,
+      "instrument": 31.945486307144165,
+      "test": 0.9024064540863037
     },
     "checkout": "successful",
     "build": "successful",
@@ -231,9 +231,9 @@
   "black_18": {
     "status": "running",
     "time": {
-      "checkout": 0.08994388580322266,
-      "instrument": 18.635034561157227,
-      "test": 1.0782320499420166
+      "checkout": 0.10123276710510254,
+      "instrument": 27.99076199531555,
+      "test": 0.9076087474822998
     },
     "checkout": "successful",
     "build": "successful",
@@ -245,9 +245,9 @@
   "black_19": {
     "status": "running",
     "time": {
-      "checkout": 0.09595704078674316,
-      "instrument": 14.744435548782349,
-      "test": 1.0635507106781006
+      "checkout": 0.10326743125915527,
+      "instrument": 27.343384742736816,
+      "test": 0.891038179397583
     },
     "checkout": "successful",
     "build": "successful",
@@ -259,9 +259,9 @@
   "black_20": {
     "status": "running",
     "time": {
-      "checkout": 0.09951257705688477,
-      "instrument": 14.458618640899658,
-      "test": 1.0782227516174316
+      "checkout": 0.10375380516052246,
+      "instrument": 29.270628690719604,
+      "test": 0.9043424129486084
     },
     "checkout": "successful",
     "build": "successful",
@@ -276,9 +276,9 @@
   "black_22": {
     "status": "running",
     "time": {
-      "checkout": 0.09916830062866211,
-      "instrument": 13.925828218460083,
-      "test": 0.9968433380126953
+      "checkout": 0.09745049476623535,
+      "instrument": 36.52685880661011,
+      "test": 0.883244514465332
     },
     "checkout": "successful",
     "build": "successful",
@@ -290,9 +290,9 @@
   "black_23": {
     "status": "running",
     "time": {
-      "checkout": 0.09016776084899902,
-      "instrument": 13.802751302719116,
-      "test": 0.9521222114562988
+      "checkout": 0.09720730781555176,
+      "instrument": 27.19010090827942,
+      "test": 0.7454566955566406
     },
     "checkout": "successful",
     "build": "successful",
