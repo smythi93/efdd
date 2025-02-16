@@ -1,0 +1,401 @@
+{
+  "scrapy_1": {
+    "status": "running",
+    "time": {
+      "checkout": 2.7722251415252686,
+      "instrument": 44.836822748184204,
+      "test": 9.122415781021118
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_2": {
+    "status": "running",
+    "time": {
+      "checkout": 0.15629315376281738,
+      "instrument": 50.569302558898926,
+      "test": 17.229148864746094
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_3": {
+    "status": "running",
+    "time": {
+      "checkout": 0.16425490379333496,
+      "instrument": 47.24051856994629,
+      "test": 24.434226989746094
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_4": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14778470993041992,
+      "instrument": 47.128700733184814,
+      "test": 4.591529369354248
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_5": {
+    "status": "running",
+    "time": {
+      "checkout": 0.18565011024475098,
+      "instrument": 59.41348052024841,
+      "test": 14.742219686508179
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_6": {
+    "status": "skipped"
+  },
+  "scrapy_7": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14835715293884277,
+      "instrument": 39.872124671936035,
+      "test": 76.93224763870239
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_8": {
+    "status": "running",
+    "time": {
+      "checkout": 0.17132806777954102,
+      "instrument": 48.24332880973816,
+      "test": 19.973015308380127
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_9": {
+    "status": "skipped"
+  },
+  "scrapy_10": {
+    "status": "running",
+    "time": {
+      "checkout": 0.19067859649658203,
+      "instrument": 50.69114828109741,
+      "test": 27.246442317962646
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_11": {
+    "status": "skipped"
+  },
+  "scrapy_12": {
+    "status": "skipped"
+  },
+  "scrapy_13": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14844679832458496,
+      "instrument": 44.389909982681274,
+      "test": 35.15950322151184
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_14": {
+    "status": "skipped"
+  },
+  "scrapy_15": {
+    "status": "running",
+    "time": {
+      "checkout": 0.16690444946289062,
+      "instrument": 57.394182443618774,
+      "test": 29.845030069351196
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_16": {
+    "status": "running",
+    "time": {
+      "checkout": 0.2765645980834961,
+      "instrument": 45.7574896812439,
+      "test": 22.83174991607666
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_17": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1451098918914795,
+      "instrument": 47.441710233688354,
+      "test": 6.120271921157837
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_18": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14914822578430176,
+      "instrument": 37.577587604522705,
+      "test": 8.257881879806519
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_19": {
+    "status": "running",
+    "time": {
+      "checkout": 0.17459654808044434,
+      "instrument": 48.58183240890503,
+      "test": 13.434283256530762
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_20": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1602470874786377,
+      "instrument": 37.47890639305115,
+      "test": 18.00427794456482
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_21": {
+    "status": "running",
+    "time": {
+      "checkout": 0.15231943130493164,
+      "instrument": 37.735772132873535,
+      "test": 11.355595827102661
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_22": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1455702781677246,
+      "instrument": 50.760592222213745,
+      "test": 10.198257446289062
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_23": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14463520050048828,
+      "instrument": 37.430418252944946,
+      "test": 8.228882312774658
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_24": {
+    "status": "skipped"
+  },
+  "scrapy_25": {
+    "status": "skipped"
+  },
+  "scrapy_26": {
+    "status": "running",
+    "time": {
+      "checkout": 0.15239524841308594,
+      "instrument": 38.01243233680725,
+      "test": 32.15460133552551
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_27": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1527101993560791,
+      "instrument": 37.738585472106934,
+      "test": 5.2216551303863525
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_28": {
+    "status": "skipped"
+  },
+  "scrapy_29": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14472627639770508,
+      "instrument": 54.16229963302612,
+      "test": 5.502134561538696
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_30": {
+    "status": "running",
+    "time": {
+      "checkout": 0.16385602951049805,
+      "instrument": 38.1551251411438,
+      "test": 10.634929418563843
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_31": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14398479461669922,
+      "instrument": 37.9481303691864,
+      "test": 9.195277214050293
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_32": {
+    "status": "running",
+    "time": {
+      "checkout": 0.16291427612304688,
+      "instrument": 38.184043884277344,
+      "test": 10.337512493133545
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_33": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14484500885009766,
+      "instrument": 38.95593881607056,
+      "test": 21.072776556015015
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_34": {
+    "status": "running",
+    "time": {
+      "checkout": 0.18302416801452637,
+      "instrument": 57.70115685462952,
+      "test": 17.743393659591675
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_35": {
+    "status": "running",
+    "time": {
+      "checkout": 0.16043496131896973,
+      "instrument": 36.2936806678772,
+      "test": 7.479501962661743
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_36": {
+    "status": "running",
+    "time": {
+      "checkout": 0.15929031372070312,
+      "instrument": 37.0124876499176,
+      "test": 4.952906370162964
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_37": {
+    "status": "running",
+    "time": {
+      "checkout": 0.16488170623779297,
+      "instrument": 36.78060793876648,
+      "test": 20.503589153289795
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_38": {
+    "status": "skipped"
+  },
+  "scrapy_39": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1701061725616455,
+      "instrument": 36.204293966293335,
+      "test": 6.004905939102173
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "scrapy_40": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14416980743408203,
+      "instrument": 38.105287075042725,
+      "test": 68.55156564712524
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "spacy_1": {
+    "status": "running",
+    "time": {
+      "checkout": 10.541635513305664,
+      "instrument": 460.65868639945984,
+      "test": 3.0343687534332275
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "spacy_2": {
+    "status": "running",
+    "time": {
+      "checkout": 0.5389866828918457,
+      "instrument": 350.88646364212036,
+      "test": 14.800349712371826
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "spacy_3": {
+    "status": "running",
+    "time": {
+      "checkout": 0.5788519382476807,
+      "instrument": 319.86080741882324,
+      "test": 3.732233762741089
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "spacy_4": {
+    "status": "running",
+    "time": {
+      "checkout": 0.5195701122283936,
+      "instrument": 316.67526745796204,
+      "test": 7.851757764816284
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "spacy_5": {
+    "status": "running",
+    "time": {
+      "checkout": 0.5241315364837646,
+      "instrument": 317.03664994239807,
+      "test": 8.97600793838501
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "spacy_6": {
+    "status": "skipped"
+  },
+  "spacy_7": {
+    "status": "running",
+    "time": {
+      "checkout": 0.526566743850708,
+      "instrument": 311.92074847221375,
+      "test": 35.4983344078064
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "spacy_8": {
+    "status": "running",
+    "time": {
+      "checkout": 0.5199177265167236,
+      "instrument": 293.7717959880829,
+      "test": 24.202468633651733
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "spacy_9": {
+    "status": "running",
+    "time": {
+      "checkout": 0.5078034400939941,
+      "instrument": 293.7748737335205,
+      "test": 35.112160205841064
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "spacy_10": {
+    "status": "running",
+    "time": {
+      "checkout": 2.7363784313201904,
+      "instrument": 345.3453710079193,
+      "test": 198.9557433128357
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}
