@@ -13,7 +13,7 @@ from sflkit.runners import PytestRunner, InputRunner
 from sflkit.runners.run import TestResult
 from sflkitlib.events import EventType
 
-EVENTS = list(map(lambda e: e.name, list(EventType)))
+EVENTS = list(map(lambda e: e.name, EventType.events()))
 OUTPUT = Path("tmp_events")
 
 DEFAULT_EXCLUDES = [

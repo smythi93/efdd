@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 import sflkit.logger
+import tests4py.logger
 
 from utils.analyze import get_analysis
 from utils.check import check
@@ -48,10 +49,10 @@ def parse_args(*args: str):
         help="execute a check of the subjects",
     )
     check_parser.add_argument(
-        "-d", default=None, dest="directory", help="the directory to check"
+        "--dir", default=None, dest="directory", help="the directory to check"
     )
 
-    commands.add_parser(
+    summarize_parser = commands.add_parser(
         "summarize",
         description="The summarize command summarizes the results of the study.",
         help="execute the summarization of the study results",
@@ -87,6 +88,29 @@ def parse_args(*args: str):
             "-e", default=None, type=int, dest="end", help="end bug id (inclusive)"
         )
 
+    for parser in (
+        analyze_parser,
+        events_parser,
+        metrics_parser,
+        check_parser,
+        interpret_parser,
+        summarize_parser,
+    ):
+        parser.add_argument(
+            "-q",
+            action="store_true",
+            dest="quite",
+            default=False,
+            help="the quite flag to deactivate t4p and sflkit logger information",
+        )
+        parser.add_argument(
+            "-d",
+            action="store_true",
+            dest="debug",
+            default=False,
+            help="the debug flag to activate debug information",
+        )
+
     return arg_parser.parse_args(args or sys.argv[1:])
 
 
@@ -95,8 +119,13 @@ def main(*args: str, stdout=sys.stdout, stderr=sys.stderr):
         sys.stdout = stdout
     if stderr is not None:
         sys.stderr = stderr
-    sflkit.logger.LOGGER.disabled = True
     args = parse_args(*args)
+    if args.quite:
+        sflkit.logger.LOGGER.setLevel("ERROR")
+        tests4py.logger.LOGGER.setLevel("ERROR")
+    elif args.debug:
+        sflkit.logger.LOGGER.setLevel("DEBUG")
+        tests4py.logger.LOGGER.setLevel("DEBUG")
     if args.command == "interpret":
         interpret(args.tex, args.plots, args.n)
     elif args.command == "check":

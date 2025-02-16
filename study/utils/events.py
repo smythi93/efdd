@@ -7,6 +7,7 @@ import traceback
 from sflkit.runners import Runner
 
 import tests4py.api as t4p
+from sflkitlib.events import EventType
 from tests4py import sfl
 from tests4py.projects import TestStatus
 
@@ -66,7 +67,12 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
         sfl_path = TMP / f"sfl_{identifier}"
         LOGGER.info(f"Instrumenting project {project}")
         start_time = time.time()
-        r = sfl.sflkit_instrument(sfl_path, project, mapping=mapping)
+        r = sfl.sflkit_instrument(
+            sfl_path,
+            project,
+            events=",".join([event.name for event in EventType.events()]),
+            mapping=mapping,
+        )
         report[identifier]["time"]["instrument"] = time.time() - start_time
         if r.successful:
             report[identifier]["build"] = "successful"
