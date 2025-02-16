@@ -1,0 +1,304 @@
+{
+  "black_1": {
+    "status": "skipped"
+  },
+  "black_2": {
+    "status": "running",
+    "time": {
+      "checkout": 0.20573091506958008,
+      "instrument": 19.623148679733276,
+      "test": 1.3178911209106445
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_fmtonoff4": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_3": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13576173782348633,
+      "instrument": 19.805987119674683,
+      "test": 1.3177471160888672
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_invalid_config_return_code": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_4": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13401150703430176,
+      "instrument": 18.417362928390503,
+      "test": 1.2492320537567139
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_beginning_backslash": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_5": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13300848007202148,
+      "instrument": 19.12183952331543,
+      "test": 1.187863826751709
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_function_trailing_comma": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_6": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1325829029083252,
+      "instrument": 18.398748636245728,
+      "test": 1.2435235977172852
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_async_as_identifier": "not_found",
+    "bug:tests/test_black.py::BlackTestCase::test_python37": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_7": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13196396827697754,
+      "instrument": 18.632111310958862,
+      "test": 1.2246832847595215
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_tuple_assign": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_8": {
+    "status": "running",
+    "time": {
+      "checkout": 0.131270170211792,
+      "instrument": 18.04166340827942,
+      "test": 1.2039151191711426
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_comments7": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_9": {
+    "status": "running",
+    "time": {
+      "checkout": 0.12947440147399902,
+      "instrument": 18.783454656600952,
+      "test": 1.2261130809783936
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_python2_print_function": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_10": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13207530975341797,
+      "instrument": 20.062954425811768,
+      "test": 1.215808391571045
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_comment_indentation": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_11": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13251972198486328,
+      "instrument": 17.92933177947998,
+      "test": 1.2131175994873047
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_comments6": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_12": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13071560859680176,
+      "instrument": 17.95605969429016,
+      "test": 3.577354669570923
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_bracket_match": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_13": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13402390480041504,
+      "instrument": 17.599955797195435,
+      "test": 1.1610145568847656
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_python37": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_14": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1273963451385498,
+      "instrument": 17.25154757499695,
+      "test": 1.165605068206787
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_get_future_imports": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_15": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1811826229095459,
+      "instrument": 19.852115631103516,
+      "test": 1.1654410362243652
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_fmtonoff2": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_16": {
+    "status": "running",
+    "time": {
+      "checkout": 0.12921500205993652,
+      "instrument": 17.617250680923462,
+      "test": 1.1239984035491943
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_symlink_out_of_root_directory": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_17": {
+    "status": "running",
+    "time": {
+      "checkout": 0.10168981552124023,
+      "instrument": 15.531774044036865,
+      "test": 1.0898830890655518
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_empty": "not_found",
+    "bug:tests/test_black.py::BlackTestCase::test_empty_ff": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_18": {
+    "status": "running",
+    "time": {
+      "checkout": 0.08994388580322266,
+      "instrument": 18.635034561157227,
+      "test": 1.0782320499420166
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_preserves_line_endings": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_19": {
+    "status": "running",
+    "time": {
+      "checkout": 0.09595704078674316,
+      "instrument": 14.744435548782349,
+      "test": 1.0635507106781006
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_comment_in_decorator": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_20": {
+    "status": "running",
+    "time": {
+      "checkout": 0.09951257705688477,
+      "instrument": 14.458618640899658,
+      "test": 1.0782227516174316
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_expression_diff": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_21": {
+    "status": "skipped"
+  },
+  "black_22": {
+    "status": "running",
+    "time": {
+      "checkout": 0.09916830062866211,
+      "instrument": 13.925828218460083,
+      "test": 0.9968433380126953
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_comments3": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  },
+  "black_23": {
+    "status": "running",
+    "time": {
+      "checkout": 0.09016776084899902,
+      "instrument": 13.802751302719116,
+      "test": 0.9521222114562988
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_black.py::BlackTestCase::test_python2": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
+  }
+}
