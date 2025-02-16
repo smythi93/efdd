@@ -2,6 +2,12 @@
   "errors": [],
   "missing_bug": [
     [
+    "thefuck_17",
+      [
+        "tests/shells/test_bash.py::TestBash::test_from_shell[ll-ls -alF]"
+      ]
+    ],
+    [
       "luigi_26",
       [
         "test/contrib/hadoop_jar_test.py::HadoopJarJobTaskTest::test_missing_jar"
@@ -397,5 +403,6 @@
     "black_20",
     "black_22",
     "black_23"
-  ]
+  ],
+  "missing_fixed": []
 }

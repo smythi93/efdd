@@ -89,9 +89,9 @@
   "luigi_9": {
     "status": "running",
     "time": {
-      "checkout": 0.13591265678405762,
-      "instrument": 35.44123125076294,
-      "test": 228.35234212875366
+      "checkout": 1.2249107360839844,
+      "instrument": 72.24984455108643,
+      "test": 229.51263427734375
     },
     "checkout": "successful",
     "build": "successful",
@@ -114,9 +114,9 @@
   "luigi_11": {
     "status": "running",
     "time": {
-      "checkout": 0.1331038475036621,
-      "instrument": 32.46621346473694,
-      "test": 304.63615322113037
+      "checkout": 0.14687323570251465,
+      "instrument": 57.42155861854553,
+      "test": 307.2642979621887
     },
     "checkout": "successful",
     "build": "successful",
@@ -151,9 +151,9 @@
   "luigi_14": {
     "status": "running",
     "time": {
-      "checkout": 0.13739252090454102,
-      "instrument": 31.72545862197876,
-      "test": 216.106205701828
+      "checkout": 0.148207426071167,
+      "instrument": 57.0510356426239,
+      "test": 217.41363835334778
     },
     "checkout": "successful",
     "build": "successful",
@@ -164,9 +164,9 @@
   "luigi_15": {
     "status": "running",
     "time": {
-      "checkout": 0.13625836372375488,
-      "instrument": 43.7092661857605,
-      "test": 211.92545986175537
+      "checkout": 0.14609503746032715,
+      "instrument": 55.566595792770386,
+      "test": 214.01498937606812
     },
     "checkout": "successful",
     "build": "successful",
@@ -177,9 +177,9 @@
   "luigi_16": {
     "status": "running",
     "time": {
-      "checkout": 0.13628077507019043,
-      "instrument": 30.577219009399414,
-      "test": 164.78181266784668
+      "checkout": 0.1456003189086914,
+      "instrument": 55.53896713256836,
+      "test": 166.4431028366089
     },
     "checkout": "successful",
     "build": "successful",
@@ -193,9 +193,9 @@
   "luigi_18": {
     "status": "running",
     "time": {
-      "checkout": 0.1344773769378662,
-      "instrument": 30.07953715324402,
-      "test": 155.31494545936584
+      "checkout": 0.14447569847106934,
+      "instrument": 55.51209855079651,
+      "test": 155.35876321792603
     },
     "checkout": "successful",
     "build": "successful",
@@ -206,9 +206,9 @@
   "luigi_19": {
     "status": "running",
     "time": {
-      "checkout": 0.13631820678710938,
-      "instrument": 30.75286102294922,
-      "test": 151.01586151123047
+      "checkout": 0.14308643341064453,
+      "instrument": 51.166370153427124,
+      "test": 142.39209818840027
     },
     "checkout": "successful",
     "build": "successful",
@@ -237,9 +237,9 @@
   "luigi_23": {
     "status": "running",
     "time": {
-      "checkout": 0.1150672435760498,
-      "instrument": 30.540462255477905,
-      "test": 69.69591665267944
+      "checkout": 0.12568998336791992,
+      "instrument": 55.86789011955261,
+      "test": 69.60526657104492
     },
     "checkout": "successful",
     "build": "successful",
@@ -256,9 +256,9 @@
   "luigi_26": {
     "status": "running",
     "time": {
-      "checkout": 0.11122488975524902,
-      "instrument": 27.87272334098816,
-      "test": 2.4943909645080566
+      "checkout": 0.12078356742858887,
+      "instrument": 55.59112501144409,
+      "test": 2.2833566665649414
     },
     "checkout": "successful",
     "build": "successful",
@@ -282,9 +282,9 @@
   "luigi_28": {
     "status": "running",
     "time": {
-      "checkout": 0.11726903915405273,
-      "instrument": 27.546969175338745,
-      "test": 3.555957555770874
+      "checkout": 0.11504745483398438,
+      "instrument": 49.40726685523987,
+      "test": 3.328301429748535
     },
     "checkout": "successful",
     "build": "successful",
@@ -309,9 +309,9 @@
   "luigi_30": {
     "status": "running",
     "time": {
-      "checkout": 0.10697245597839355,
-      "instrument": 27.715237379074097,
-      "test": 8.309741735458374
+      "checkout": 0.11501336097717285,
+      "instrument": 49.31112194061279,
+      "test": 7.979282379150391
     },
     "checkout": "successful",
     "build": "successful",
@@ -322,9 +322,9 @@
   "luigi_31": {
     "status": "running",
     "time": {
-      "checkout": 0.12453985214233398,
-      "instrument": 26.966646194458008,
-      "test": 86.40115261077881
+      "checkout": 0.11474418640136719,
+      "instrument": 57.46915054321289,
+      "test": 85.7951147556305
     },
     "checkout": "successful",
     "build": "successful",
@@ -335,9 +335,9 @@
   "luigi_32": {
     "status": "running",
     "time": {
-      "checkout": 0.1080625057220459,
-      "instrument": 27.405577182769775,
-      "test": 6.285823106765747
+      "checkout": 0.11393046379089355,
+      "instrument": 48.47618365287781,
+      "test": 5.982162237167358
     },
     "checkout": "successful",
     "build": "successful",
