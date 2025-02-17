@@ -29,9 +29,9 @@
   "sanic_4": {
     "status": "running",
     "time": {
-      "checkout": 0.18749499320983887,
-      "instrument": 12.758800983428955,
-      "test": 1.7933692932128906
+      "checkout": 0.7520627975463867,
+      "instrument": 17.542706966400146,
+      "test": 2.7630629539489746
     },
     "checkout": "successful",
     "build": "successful",

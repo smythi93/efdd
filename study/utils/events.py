@@ -72,15 +72,20 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
                 os.path.join(original_checkout, "tests4py_requirements.txt"), "w"
             ) as f:
                 f.write(
-                    content.replace("requests-async==0.4.1", "").replace(
-                        "requests-async==0.5.0", ""
-                    )
+                    content.replace(
+                        "requests-async==0.4.1", "http3==0.6.*\nrequests==2.*"
+                    ).replace("requests-async==0.5.0", "http3==0.6.*\nrequests==2.*")
                 )
             if project.bug_id == 4:
                 with open(os.path.join(original_checkout, "setup.py"), "r") as f:
                     content = f.read()
                 with open(os.path.join(original_checkout, "setup.py"), "w") as f:
-                    f.write(content.replace('\n    "requests-async==0.5.0",', ""))
+                    f.write(
+                        content.replace(
+                            '\n    "requests-async==0.5.0",',
+                            '\n    "http3==0.6.*",\n    "requests==2.*",',
+                        )
+                    )
 
         mapping = MAPPINGS_DIR / f"{project}.json"
         sfl_path = TMP / f"sfl_{identifier}"
@@ -100,6 +105,20 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
             report[identifier]["error"] = traceback.format_exception(r.raised)
             LOGGER.error(report[identifier]["error"])
             continue
+
+        if project.project_name == "sanic":
+            shutil.copytree(
+                os.path.join("sanic-libs", "requests_async"),
+                os.path.join(
+                    sfl_path, "tests4py_venv", "lib", "python3.8", "site-packages"
+                ),
+            )
+            shutil.copytree(
+                os.path.join("sanic-libs", "requests_async-0.5.0.dist-info"),
+                os.path.join(
+                    sfl_path, "tests4py_venv", "lib", "python3.8", "site-packages"
+                ),
+            )
 
         with open(mapping, "r") as f:
             mapping_content = json.load(f)
