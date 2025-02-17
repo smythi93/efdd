@@ -110,13 +110,23 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
             shutil.copytree(
                 os.path.join("sanic-libs", "requests_async"),
                 os.path.join(
-                    sfl_path, "tests4py_venv", "lib", "python3.8", "site-packages"
+                    sfl_path,
+                    "tests4py_venv",
+                    "lib",
+                    "python3.8",
+                    "site-packages",
+                    "requests_async",
                 ),
             )
             shutil.copytree(
                 os.path.join("sanic-libs", "requests_async-0.5.0.dist-info"),
                 os.path.join(
-                    sfl_path, "tests4py_venv", "lib", "python3.8", "site-packages"
+                    sfl_path,
+                    "tests4py_venv",
+                    "lib",
+                    "python3.8",
+                    "site-packages",
+                    "requests_async-0.5.0.dist-info",
                 ),
             )
 
