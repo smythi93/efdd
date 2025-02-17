@@ -1,0 +1,41 @@
+{
+  "cookiecutter_1": {
+    "status": "skipped"
+  },
+  "cookiecutter_2": {
+    "status": "running",
+    "time": {
+      "checkout": 1.4848499298095703,
+      "instrument": 24.183776140213013,
+      "test": 14.007797479629517
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "cookiecutter_3": {
+    "status": "running",
+    "time": {
+      "checkout": 0.8609592914581299,
+      "instrument": 22.493818044662476,
+      "test": 18.160165309906006
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "cookiecutter_4": {
+    "status": "running",
+    "time": {
+      "checkout": 0.7375905513763428,
+      "instrument": 20.279224395751953,
+      "test": 4.789191246032715
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}
