@@ -63,6 +63,16 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
             continue
         original_checkout = r.location
 
+        if project.project_name == "sanic" and project.bug_id == 5:
+            with open(
+                os.path.join(original_checkout, "tests4py_requirements.txt"), "r"
+            ) as f:
+                content = f.read()
+            with open(
+                os.path.join(original_checkout, "tests4py_requirements.txt"), "w"
+            ) as f:
+                f.write(content.replace("requests-async==0.4.1", ""))
+
         mapping = MAPPINGS_DIR / f"{project}.json"
         sfl_path = TMP / f"sfl_{identifier}"
         LOGGER.info(f"Instrumenting project {project}")
