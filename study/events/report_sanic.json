@@ -2,8 +2,8 @@
   "sanic_1": {
     "status": "running",
     "time": {
-      "checkout": 1.7940897941589355,
-      "instrument": 20.99423050880432
+      "checkout": 0.19365620613098145,
+      "instrument": 19.34757399559021
     },
     "checkout": "successful",
     "build": "failed",
@@ -22,8 +22,8 @@
   "sanic_3": {
     "status": "running",
     "time": {
-      "checkout": 0.1984877586364746,
-      "instrument": 19.667967557907104
+      "checkout": 0.18665575981140137,
+      "instrument": 17.765729904174805
     },
     "checkout": "successful",
     "build": "failed",
@@ -39,8 +39,8 @@
   "sanic_4": {
     "status": "running",
     "time": {
-      "checkout": 0.18850255012512207,
-      "instrument": 20.756197929382324
+      "checkout": 0.19041991233825684,
+      "instrument": 17.73229742050171
     },
     "checkout": "successful",
     "build": "failed",
@@ -56,18 +56,13 @@
   "sanic_5": {
     "status": "running",
     "time": {
-      "checkout": 0.18764185905456543,
-      "instrument": 22.75838565826416
+      "checkout": 0.13345026969909668,
+      "instrument": 42.0108482837677,
+      "test": 5.401112079620361
     },
     "checkout": "successful",
-    "build": "failed",
-    "error": [
-      "Traceback (most recent call last):\n",
-      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/__init__.py\", line 42, in sflkit_instrument\n    instrument(\n",
-      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/utils.py\", line 120, in instrument\n    raise report.raised\n",
-      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/api/default.py\", line 340, in build\n    subprocess.check_call(\n",
-      "  File \"/home/smytzek/.pyenv/versions/3.11.4/lib/python3.11/subprocess.py\", line 413, in check_call\n    raise CalledProcessError(retcode, cmd)\n",
-      "subprocess.CalledProcessError: Command '['python3', '-m', 'pip', 'install', '-r', PosixPath('/home/smytzek/efdd/study/tmp/sfl_sanic_5/tests4py_requirements.txt')]' returned non-zero exit status 1.\n"
-    ]
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
   }
 }
