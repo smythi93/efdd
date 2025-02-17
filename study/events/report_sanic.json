@@ -29,19 +29,16 @@
   "sanic_4": {
     "status": "running",
     "time": {
-      "checkout": 0.162827730178833,
-      "instrument": 12.815559387207031
+      "checkout": 0.18749499320983887,
+      "instrument": 12.758800983428955,
+      "test": 1.7933692932128906
     },
     "checkout": "successful",
-    "build": "failed",
-    "error": [
-      "Traceback (most recent call last):\n",
-      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/__init__.py\", line 42, in sflkit_instrument\n    instrument(\n",
-      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/utils.py\", line 120, in instrument\n    raise report.raised\n",
-      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/api/default.py\", line 363, in build\n    subprocess.check_call(\n",
-      "  File \"/home/smytzek/.pyenv/versions/3.11.4/lib/python3.11/subprocess.py\", line 413, in check_call\n    raise CalledProcessError(retcode, cmd)\n",
-      "subprocess.CalledProcessError: Command '['python', '-m', 'pip', 'install', '-e', '.']' returned non-zero exit status 1.\n"
-    ]
+    "build": "successful",
+    "test": "successful",
+    "bug:tests/test_requests.py::test_url_for_without_server_name": "not_found",
+    "bug_passing": "empty",
+    "check": "failed"
   },
   "sanic_5": {
     "status": "running",
