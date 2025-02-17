@@ -1,0 +1,260 @@
+{
+  "black_1": {
+    "status": "skipped"
+  },
+  "black_2": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14643192291259766,
+      "instrument": 15.30143666267395,
+      "test": 611.1999447345734
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_3": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13974690437316895,
+      "instrument": 17.907598733901978,
+      "test": 614.9730539321899
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_4": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1912062168121338,
+      "instrument": 16.115219831466675,
+      "test": 402.9086594581604
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_5": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14304757118225098,
+      "instrument": 15.225005865097046,
+      "test": 387.3897135257721
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_6": {
+    "status": "running",
+    "time": {
+      "checkout": 0.18506979942321777,
+      "instrument": 16.052823781967163,
+      "test": 385.8035800457001
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_7": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13828229904174805,
+      "instrument": 15.327089786529541,
+      "test": 379.9434335231781
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_8": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13677620887756348,
+      "instrument": 15.294998168945312,
+      "test": 380.0331451892853
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_9": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14171648025512695,
+      "instrument": 15.232275247573853,
+      "test": 378.3854343891144
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_10": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1416478157043457,
+      "instrument": 16.504894733428955,
+      "test": 346.0201826095581
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_11": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14513540267944336,
+      "instrument": 16.40672492980957,
+      "test": 341.42295837402344
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_12": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14170289039611816,
+      "instrument": 15.039200782775879,
+      "test": 332.73200702667236
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_13": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13676023483276367,
+      "instrument": 14.994109153747559,
+      "test": 322.69109869003296
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_14": {
+    "status": "running",
+    "time": {
+      "checkout": 0.14303278923034668,
+      "instrument": 16.036413192749023,
+      "test": 315.3516023159027
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_15": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1489880084991455,
+      "instrument": 15.286365985870361,
+      "test": 335.02980518341064
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_16": {
+    "status": "running",
+    "time": {
+      "checkout": 0.13572430610656738,
+      "instrument": 16.74984359741211,
+      "test": 314.738974571228
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_17": {
+    "status": "running",
+    "time": {
+      "checkout": 0.10464763641357422,
+      "instrument": 14.116963624954224,
+      "test": 325.434268951416
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_18": {
+    "status": "running",
+    "time": {
+      "checkout": 0.11048102378845215,
+      "instrument": 13.374037265777588,
+      "test": 319.36288595199585
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_19": {
+    "status": "running",
+    "time": {
+      "checkout": 0.10893893241882324,
+      "instrument": 12.997112512588501,
+      "test": 230.5918574333191
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_20": {
+    "status": "running",
+    "time": {
+      "checkout": 0.10160350799560547,
+      "instrument": 14.67180848121643,
+      "test": 228.32079648971558
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_21": {
+    "status": "skipped"
+  },
+  "black_22": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1672508716583252,
+      "instrument": 12.40363335609436,
+      "test": 163.22051358222961
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "black_23": {
+    "status": "running",
+    "time": {
+      "checkout": 0.09413886070251465,
+      "instrument": 12.545241594314575,
+      "test": 156.01546144485474
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}
