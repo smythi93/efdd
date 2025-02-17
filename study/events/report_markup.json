@@ -1,0 +1,26 @@
+{
+  "markup_1": {
+    "status": "running",
+    "time": {
+      "checkout": 1.387413740158081,
+      "instrument": 11.972063541412354,
+      "test": 1.0999658107757568
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "markup_2": {
+    "status": "running",
+    "time": {
+      "checkout": 0.9238295555114746,
+      "instrument": 11.730425357818604,
+      "test": 1.6938047409057617
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "calculator_1": {
+    "status": "running",
+    "time": {
+      "checkout": 0.5285630226135254,
+      "instrument": 11.8280508518219,
+      "test": 3.496243953704834
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}

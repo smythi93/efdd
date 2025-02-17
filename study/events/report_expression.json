@@ -1,0 +1,14 @@
+{
+  "expression_1": {
+    "status": "running",
+    "time": {
+      "checkout": 0.5012328624725342,
+      "instrument": 11.791198253631592,
+      "test": 2.9893743991851807
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}
