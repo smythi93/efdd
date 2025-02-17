@@ -76,6 +76,11 @@ def get_events(project_name, bug_id, start: int = None, end: int = None):
                         "requests-async==0.5.0", ""
                     )
                 )
+            if project.bug_id == 4:
+                with open(os.path.join(original_checkout, "setup.py"), "r") as f:
+                    content = f.read()
+                with open(os.path.join(original_checkout, "setup.py"), "w") as f:
+                    f.write(content.replace('\n   "requests-async==0.5.0",' ""))
 
         mapping = MAPPINGS_DIR / f"{project}.json"
         sfl_path = TMP / f"sfl_{identifier}"

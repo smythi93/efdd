@@ -1,0 +1,377 @@
+{
+  "thefuck_1": {
+    "status": "running",
+    "time": {
+      "checkout": 0.4745359420776367,
+      "instrument": 13.755018949508667,
+      "test": 4.149021148681641
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_2": {
+    "status": "running",
+    "time": {
+      "checkout": 0.4191620349884033,
+      "instrument": 14.077511072158813,
+      "test": 24.7201189994812
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_3": {
+    "status": "running",
+    "time": {
+      "checkout": 0.40498995780944824,
+      "instrument": 14.40230917930603,
+      "test": 23.733114004135132
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_4": {
+    "status": "running",
+    "time": {
+      "checkout": 0.47788000106811523,
+      "instrument": 13.751611232757568,
+      "test": 29.365978956222534
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_5": {
+    "status": "running",
+    "time": {
+      "checkout": 0.43650293350219727,
+      "instrument": 12.696670055389404,
+      "test": 12.233927726745605
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_6": {
+    "status": "running",
+    "time": {
+      "checkout": 0.4347367286682129,
+      "instrument": 17.917453050613403,
+      "test": 9.505582094192505
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_7": {
+    "status": "running",
+    "time": {
+      "checkout": 0.46822404861450195,
+      "instrument": 12.47780990600586,
+      "test": 6.072166919708252
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_8": {
+    "status": "running",
+    "time": {
+      "checkout": 0.4003021717071533,
+      "instrument": 12.16277003288269,
+      "test": 8.027064085006714
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_9": {
+    "status": "running",
+    "time": {
+      "checkout": 0.4662892818450928,
+      "instrument": 12.214099884033203,
+      "test": 3.7121241092681885
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_10": {
+    "status": "running",
+    "time": {
+      "checkout": 0.4698641300201416,
+      "instrument": 10.88146710395813,
+      "test": 23.239129781723022
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_11": {
+    "status": "skipped"
+  },
+  "thefuck_12": {
+    "status": "running",
+    "time": {
+      "checkout": 0.49616098403930664,
+      "instrument": 13.62632417678833,
+      "test": 8.641671895980835
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_13": {
+    "status": "running",
+    "time": {
+      "checkout": 0.355698823928833,
+      "instrument": 13.091417074203491,
+      "test": 6.399813175201416
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_14": {
+    "status": "running",
+    "time": {
+      "checkout": 0.3878509998321533,
+      "instrument": 12.267899990081787,
+      "test": 17.24982190132141
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_15": {
+    "status": "running",
+    "time": {
+      "checkout": 0.3554420471191406,
+      "instrument": 11.137682914733887,
+      "test": 5.782253742218018
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_16": {
+    "status": "running",
+    "time": {
+      "checkout": 0.3648860454559326,
+      "instrument": 11.198009967803955,
+      "test": 18.37391996383667
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_17": {
+    "status": "running",
+    "time": {
+      "checkout": 0.3638319969177246,
+      "instrument": 9.948161125183105,
+      "test": 9.366690158843994
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_18": {
+    "status": "running",
+    "time": {
+      "checkout": 0.3676629066467285,
+      "instrument": 11.133723020553589,
+      "test": 10.007065296173096
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_19": {
+    "status": "running",
+    "time": {
+      "checkout": 0.36610913276672363,
+      "instrument": 9.169667959213257,
+      "test": 10.603032112121582
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_20": {
+    "status": "running",
+    "time": {
+      "checkout": 0.35654282569885254,
+      "instrument": 9.445666074752808,
+      "test": 8.253820896148682
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_21": {
+    "status": "running",
+    "time": {
+      "checkout": 0.3807671070098877,
+      "instrument": 13.182573080062866,
+      "test": 6.533889055252075
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_22": {
+    "status": "running",
+    "time": {
+      "checkout": 0.40628719329833984,
+      "instrument": 11.162763118743896,
+      "test": 6.003563165664673
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_23": {
+    "status": "running",
+    "time": {
+      "checkout": 0.34539794921875,
+      "instrument": 10.212884902954102,
+      "test": 17.628734827041626
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_24": {
+    "status": "running",
+    "time": {
+      "checkout": 0.40183401107788086,
+      "instrument": 11.612061023712158,
+      "test": 5.803508043289185
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_25": {
+    "status": "running",
+    "time": {
+      "checkout": 0.35415124893188477,
+      "instrument": 9.750194311141968,
+      "test": 9.818068981170654
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_26": {
+    "status": "running",
+    "time": {
+      "checkout": 0.3854658603668213,
+      "instrument": 9.705329895019531,
+      "test": 11.068081855773926
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_27": {
+    "status": "running",
+    "time": {
+      "checkout": 0.37142395973205566,
+      "instrument": 12.91885495185852,
+      "test": 13.930170059204102
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_28": {
+    "status": "running",
+    "time": {
+      "checkout": 0.37702488899230957,
+      "instrument": 10.828612089157104,
+      "test": 79.46381616592407
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_29": {
+    "status": "running",
+    "time": {
+      "checkout": 0.37974095344543457,
+      "instrument": 12.284354209899902,
+      "test": 21.032776832580566
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_30": {
+    "status": "running",
+    "time": {
+      "checkout": 0.3379690647125244,
+      "instrument": 10.212887048721313,
+      "test": 55.31592583656311
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_31": {
+    "status": "running",
+    "time": {
+      "checkout": 0.34846997261047363,
+      "instrument": 10.239410877227783,
+      "test": 7.049158811569214
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "thefuck_32": {
+    "status": "running",
+    "time": {
+      "checkout": 0.3721311092376709,
+      "instrument": 8.986358642578125,
+      "test": 3.108952045440674
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}
