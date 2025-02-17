@@ -1,0 +1,73 @@
+{
+  "sanic_1": {
+    "status": "running",
+    "time": {
+      "checkout": 1.7940897941589355,
+      "instrument": 20.99423050880432
+    },
+    "checkout": "successful",
+    "build": "failed",
+    "error": [
+      "Traceback (most recent call last):\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/__init__.py\", line 42, in sflkit_instrument\n    instrument(\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/utils.py\", line 120, in instrument\n    raise report.raised\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/api/default.py\", line 340, in build\n    subprocess.check_call(\n",
+      "  File \"/home/smytzek/.pyenv/versions/3.11.4/lib/python3.11/subprocess.py\", line 413, in check_call\n    raise CalledProcessError(retcode, cmd)\n",
+      "subprocess.CalledProcessError: Command '['python3', '-m', 'pip', 'install', '-r', PosixPath('/home/smytzek/efdd/study/tmp/sfl_sanic_1/tests4py_requirements.txt')]' returned non-zero exit status 1.\n"
+    ]
+  },
+  "sanic_2": {
+    "status": "skipped"
+  },
+  "sanic_3": {
+    "status": "running",
+    "time": {
+      "checkout": 0.1984877586364746,
+      "instrument": 19.667967557907104
+    },
+    "checkout": "successful",
+    "build": "failed",
+    "error": [
+      "Traceback (most recent call last):\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/__init__.py\", line 42, in sflkit_instrument\n    instrument(\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/utils.py\", line 120, in instrument\n    raise report.raised\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/api/default.py\", line 340, in build\n    subprocess.check_call(\n",
+      "  File \"/home/smytzek/.pyenv/versions/3.11.4/lib/python3.11/subprocess.py\", line 413, in check_call\n    raise CalledProcessError(retcode, cmd)\n",
+      "subprocess.CalledProcessError: Command '['python3', '-m', 'pip', 'install', '-r', PosixPath('/home/smytzek/efdd/study/tmp/sfl_sanic_3/tests4py_requirements.txt')]' returned non-zero exit status 1.\n"
+    ]
+  },
+  "sanic_4": {
+    "status": "running",
+    "time": {
+      "checkout": 0.18850255012512207,
+      "instrument": 20.756197929382324
+    },
+    "checkout": "successful",
+    "build": "failed",
+    "error": [
+      "Traceback (most recent call last):\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/__init__.py\", line 42, in sflkit_instrument\n    instrument(\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/utils.py\", line 120, in instrument\n    raise report.raised\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/api/default.py\", line 340, in build\n    subprocess.check_call(\n",
+      "  File \"/home/smytzek/.pyenv/versions/3.11.4/lib/python3.11/subprocess.py\", line 413, in check_call\n    raise CalledProcessError(retcode, cmd)\n",
+      "subprocess.CalledProcessError: Command '['python3', '-m', 'pip', 'install', '-r', PosixPath('/home/smytzek/efdd/study/tmp/sfl_sanic_4/tests4py_requirements.txt')]' returned non-zero exit status 1.\n"
+    ]
+  },
+  "sanic_5": {
+    "status": "running",
+    "time": {
+      "checkout": 0.18764185905456543,
+      "instrument": 22.75838565826416
+    },
+    "checkout": "successful",
+    "build": "failed",
+    "error": [
+      "Traceback (most recent call last):\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/__init__.py\", line 42, in sflkit_instrument\n    instrument(\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/sfl/utils.py\", line 120, in instrument\n    raise report.raised\n",
+      "  File \"/home/smytzek/efdd/study/venv/lib/python3.11/site-packages/tests4py/api/default.py\", line 340, in build\n    subprocess.check_call(\n",
+      "  File \"/home/smytzek/.pyenv/versions/3.11.4/lib/python3.11/subprocess.py\", line 413, in check_call\n    raise CalledProcessError(retcode, cmd)\n",
+      "subprocess.CalledProcessError: Command '['python3', '-m', 'pip', 'install', '-r', PosixPath('/home/smytzek/efdd/study/tmp/sfl_sanic_5/tests4py_requirements.txt')]' returned non-zero exit status 1.\n"
+    ]
+  }
+}

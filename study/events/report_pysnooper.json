@@ -1,0 +1,29 @@
+{
+  "pysnooper_1": {
+    "status": "skipped"
+  },
+  "pysnooper_2": {
+    "status": "running",
+    "time": {
+      "checkout": 0.654109001159668,
+      "instrument": 16.74317193031311,
+      "test": 16.13089346885681
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  },
+  "pysnooper_3": {
+    "status": "running",
+    "time": {
+      "checkout": 0.22591781616210938,
+      "instrument": 17.54146981239319,
+      "test": 3.1161956787109375
+    },
+    "checkout": "successful",
+    "build": "successful",
+    "test": "successful",
+    "check": "successful"
+  }
+}
