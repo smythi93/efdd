@@ -92,45 +92,6 @@ class Confusion:
     def avg_time(self):
         return self.time / max(self.total, 1)
 
-    def average_precision_bug(self) -> float:
-        return np.average(list(map(Confusion.precision_bug, self.all_confusions)))
-
-    def average_precision_no_bug(self) -> float:
-        return np.average(list(map(Confusion.precision_no_bug, self.all_confusions)))
-
-    def average_recall_bug(self) -> float:
-        return np.average(list(map(Confusion.recall_bug, self.all_confusions)))
-
-    def average_recall_no_bug(self) -> float:
-        return np.average(list(map(Confusion.recall_no_bug, self.all_confusions)))
-
-    def average_accuracy(self) -> float:
-        return np.average(list(map(Confusion.accuracy, self.all_confusions)))
-
-    def average_f1_bug(self) -> float:
-        return np.average(list(map(Confusion.f1_bug, self.all_confusions)))
-
-    def average_f1_no_bug(self) -> float:
-        return np.average(list(map(Confusion.f1_no_bug, self.all_confusions)))
-
-    def average_macro_precision(self):
-        return np.average(list(map(Confusion.macro_precision, self.all_confusions)))
-
-    def average_macro_recall(self):
-        return np.average(list(map(Confusion.macro_recall, self.all_confusions)))
-
-    def average_macro_f1(self):
-        return np.average(list(map(Confusion.macro_f1, self.all_confusions)))
-
-    def average_macro_auc(self):
-        return np.average(list(map(Confusion.macro_auc, self.all_confusions)))
-
-    def average_auc_bug(self):
-        return np.average(list(map(Confusion.auc_bug, self.all_confusions)))
-
-    def average_auc_no_bug(self):
-        return np.average(list(map(Confusion.auc_no_bug, self.all_confusions)))
-
     def print(self):
         print(f"tp  : {self.tp}")
         print(f"fn  : {self.fn}")
@@ -150,17 +111,6 @@ class Confusion:
         print(f"mf1 : {self.macro_f1():.4f}")
         print(f"ps  : {self.perfect_score():.2f}")
         print(f"time: {self.avg_time():.2f}")
-        print()
-        print(f"aac  : {self.average_accuracy():.2f}")
-        print(f"apb  : {self.average_precision_bug():.4f}")
-        print(f"apn  : {self.average_precision_no_bug():.4f}")
-        print(f"arb  : {self.average_recall_bug():.4f}")
-        print(f"arn  : {self.average_recall_no_bug():.4f}")
-        print(f"af1b : {self.average_f1_bug():.4f}")
-        print(f"af1n : {self.average_f1_no_bug():.4f}")
-        print(f"amp  : {self.average_macro_precision():.4f}")
-        print(f"amr  : {self.average_macro_recall():.4f}")
-        print(f"amf1 : {self.average_macro_f1():.4f}")
 
 
 EVAL = "eval"
