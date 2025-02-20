@@ -108,6 +108,8 @@ def evaluate(project_name, bug_id, start: int = None, end: int = None):
         results_file = RESULTS_DIR / f"{project.get_identifier()}.json"
         if results_file.exists():
             continue
+        if project.project_name == "youtubedl" and project.bug_id == 24:
+            project.loc = 87341
         results = dict()
         print(project)
         if (
