@@ -31,8 +31,6 @@ from utils.constants import (
     UNIFIED_AVG,
     CORRELATION,
     TRUE,
-    FALSE,
-    TOTAL,
 )
 
 
@@ -43,26 +41,25 @@ def get_results_for_type(
     report,
     faulty_lines,
     eval_metric=max,
+    include_correlation=True,
 ):
     type_results = dict()
     type_results[SUSPICIOUSNESS] = dict()
-    type_results[CORRELATION] = {
-        TRUE: [],
-        FALSE: [],
-        TOTAL: [],
-    }
+    if include_correlation:
+        type_results[CORRELATION] = {
+            TRUE: [],
+        }
     type_results[LOCALIZATION] = dict()
-    analysis = analyzer.get_analysis_by_type(type_)
-    for object_ in analysis:
-        if isinstance(object_, Spectrum):
-            type_results[CORRELATION][TRUE].append(object_.failed_observed)
-            type_results[CORRELATION][FALSE].append(object_.failed_observed)
-        elif isinstance(object_, Predicate):
-            type_results[CORRELATION][TRUE].append(object_.true_relevant)
-            type_results[CORRELATION][TRUE].append(object_.false_relevant)
-        type_results[CORRELATION][TOTAL].append(
-            object_.failed_observed + object_.passed_observed
-        )
+    if type_:
+        analysis = analyzer.get_analysis_by_type(type_)
+    else:
+        analysis = analyzer.get_analysis()
+    if include_correlation:
+        for object_ in analysis:
+            if isinstance(object_, Spectrum):
+                type_results[CORRELATION][TRUE].append(object_.failed_observed)
+            elif isinstance(object_, Predicate):
+                type_results[CORRELATION][TRUE].append(object_.true_relevant)
     for metric in METRICS:
         suggestions = analyzer.get_sorted_suggestions_from_analysis(
             report.location, analysis, metric
@@ -133,10 +130,16 @@ def evaluate(project_name, bug_id, start: int = None, end: int = None):
                 type_, analyzer, project, report, faulty_lines
             )
         subject_results[UNIFIED_MAX] = get_results_for_type(
-            None, analyzer, project, report, faulty_lines
+            None, analyzer, project, report, faulty_lines, include_correlation=False
         )
         subject_results[UNIFIED_AVG] = get_results_for_type(
-            None, analyzer, project, report, faulty_lines, eval_metric=Average().average
+            None,
+            analyzer,
+            project,
+            report,
+            faulty_lines,
+            eval_metric=Average().average,
+            include_correlation=False,
         )
         results[project.get_identifier()] = subject_results
         with open(results_file, "w") as f:

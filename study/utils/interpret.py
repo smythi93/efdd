@@ -19,12 +19,21 @@ from utils.constants import (
     AVG,
     ALL,
     SUMMARY,
+    CORRELATION,
+    MEDIAN,
+    BEST,
+    MEAN,
+    WORST,
+    TRUE,
+    P_VALUE,
 )
 
 tex_translation = {
     Spectrum.Tarantula.__name__: "\\TARANTULA{}",
     Spectrum.Ochiai.__name__: "\\OCHIAI{}",
     Spectrum.DStar.__name__: "\\DSTAR{}",
+    Spectrum.Naish2.__name__: "\\NAISHT{}",
+    Spectrum.GP13.__name__: "\\GPOT{}",
     AnalysisType.LINE.name: "Lines",
     AnalysisType.BRANCH.name: "Branches",
     AnalysisType.FUNCTION.name: "Functions",
@@ -47,51 +56,48 @@ tex_translation = {
     Scenario.AVG_CASE.value: "Average Case Debugging",
     "exam": "\\EXAM{}",
     "wasted-effort": "W Effort",
-    "unified_max": "$\\text{Multi}_\\text{max}$",
-    "unified_avg": "$\\text{Multi}_\\text{mean}$",
+    "unified-max": "$\\text{Multi}_\\text{max}$",
+    "unified-avg": "$\\text{Multi}_\\text{mean}$",
 }
 
 
-def get_localization_tex_table(results, best_for_each_metric):
+def get_localization_table(results, best_for_each_metric, features):
     table = (
-        "\\begin{tabular}{llrrrrrrrrrrrrrrr}\n"
+        "\\begin{tabular}{llrrrrrrrrrrrrrrrrrr}\n"
         "    \\toprule\n"
         "    \\multicolumn{1}{c}{\\multirow{4}*{Feature}} & \\multicolumn{1}{c}{\\multirow{4}*{Metric}} & "
-        "\\multicolumn{5}{c}{Best-Case Debugging} & \\multicolumn{5}{c}{Average-Case Debugging} & "
-        "\\multicolumn{5}{c}{Worst-Case Debugging} \\\\\\cmidrule(lr){3-7}\\cmidrule(lr){8-12}\\cmidrule(lr){13-17}\n"
+        "\\multicolumn{6}{c}{Best-Case Debugging} & \\multicolumn{6}{c}{Average-Case Debugging} & "
+        "\\multicolumn{6}{c}{Worst-Case Debugging} \\\\\\cmidrule(lr){3-8}\\cmidrule(lr){9-14}\\cmidrule(lr){15-20}\n"
         "    &"
         + (
             (
-                " & \\multicolumn{3}{c}{Top-k} & \\multicolumn{1}{c}{\\multirow{2}*{\\EXAM{}}} & "
+                " & \\multicolumn{4}{c}{Top-k} & \\multicolumn{1}{c}{\\multirow{2}*{\\EXAM{}}} & "
                 "\\multicolumn{1}{c}{\\multirow{2}*{Effort}}\n"
             )
             * 3
         )
-        + "\\\\\\cmidrule{3-5}\\cmidrule{8-10}\\cmidrule{13-15}\n    &"
+        + "\\\\\\cmidrule{3-6}\\cmidrule{9-11}\\cmidrule{15-17}\n    &"
         + (
             (
-                " & \\multicolumn{1}{c}{5} & \\multicolumn{1}{c}{10} & \\multicolumn{1}{c}{200} & &\n"
+                " & \\multicolumn{1}{c}{1} & \\multicolumn{1}{c}{5}"
+                " & \\multicolumn{1}{c}{10} & \\multicolumn{1}{c}{200} & &\n"
             )
             * 3
         )
         + "\\\\\\midrule\n"
     )
-    unified_table = table[:]
-    for feature in FEATURES + UNIFIED:
-        if feature in FEATURES:
-            t = table
-            if FEATURES.index(feature) % 2 == 1:
-                t += "\\rowcolor{row}\n"
-        else:
-            t = unified_table
-            if UNIFIED.index(feature) % 2 == 1:
-                t += "\\rowcolor{row}\n"
+    for feature in features:
         for metric in METRICS:
-            if metric == METRICS[0]:
-                t += f"    \\multirow{{{len(METRICS)}}}*{{{tex_translation[feature]}}}"
+            metric = metric.__name__
+            if features.index(feature) % 2 == 1:
+                table += "\\rowcolor{row}\n"
+            if metric == METRICS[len(METRICS) // 2].__name__:
+                table += f"    {tex_translation[feature]}"
             else:
-                t += "    "
-            t += f" & {tex_translation[metric]}"
+                table += "    "
+            table += f" & {tex_translation[metric]}"
+            if metric == METRICS[0].__name__:
+                table += "\\rowstrut{}"
             for scenario in SCENARIOS:
                 for localization in LOCALIZATIONS:
                     if feature in FEATURES:
@@ -111,96 +117,145 @@ def get_localization_tex_table(results, best_for_each_metric):
                                 f"unified_{localization}_wins"
                             ]
                         )
-                    t += " & "
+                    table += " & "
                     if text_bf:
-                        t += "\\textbf{\\color{deepblue}"
+                        table += "\\textbf{\\color{deepblue}"
                     if localization.startswith("top"):
-                        t += (
+                        table += (
                             f"{results[LOCALIZATION][feature][metric][scenario][localization][AVG] * 100:.1f}"
                             "\\%"
                         )
                     elif localization == "exam":
-                        t += f"{results[LOCALIZATION][feature][metric][scenario][localization][AVG]:.3f}"
+                        table += f"{results[LOCALIZATION][feature][metric][scenario][localization][AVG]:.3f}"
                     else:
-                        t += (
+                        table += (
                             f"{results[LOCALIZATION][feature][metric][scenario][localization][AVG] / 1000:.1f}"
                             f"k"
                         )
                     if text_bf:
-                        t += "}"
-            t += " \\\\\n"
-        if feature != UNIFIED[-1] and feature != FEATURES[-1]:
-            t += "\\addlinespace[0.5em]\n"
-
+                        table += "}"
+            table += " \\\\"
+            if metric != METRICS[-1].__name__:
+                table += "\n"
+        table += "[.2em]\n"
     table += "\\bottomrule\n\\end{tabular}\n"
-    unified_table += "\\bottomrule\n\\end{tabular}\n"
-    return table, unified_table
+    return table
 
 
-def get_correlation_tex_table(results, best_for_each_metric):
+def get_localization_tex_table(results, best_for_each_metric):
+    return (
+        get_localization_table(
+            results, best_for_each_metric, FEATURES[: len(FEATURES) // 2]
+        ),
+        get_localization_table(
+            results, best_for_each_metric, FEATURES[len(FEATURES) // 2 :]
+        ),
+        get_localization_table(results, best_for_each_metric, UNIFIED),
+    )
+
+
+def get_correlation_table(results, best_for_each_metric, features):
     table = (
-        "\\begin{tabular}{llrrrrrrrrrrrr}\n"
+        "\\begin{tabular}{llrrrrrrrrr}\n"
         "    \\toprule\n"
-        "    \\multicolumn{1}{c}{\\multirow{4}*{Feature}} & \\multicolumn{1}{c}{\\multirow{4}*{Metric}} & "
-        "\\multicolumn{4}{c}{\\multirow{2}*{Correlation}} & \\multicolumn{8}{c}{Impact of Repairs} "
-        "\\\\\\cmidrule(lr){7-14}\n"
-        "    & & & & & & \\multicolumn{4}{c}{Relative} & \\multicolumn{4}{c}{Subjects} "
-        "\\\\\\cmidrule(lr){3-6}\\cmidrule(lr){7-10}\\cmidrule(lr){11-14}\n"
+        "    \\multicolumn{1}{c}{\\multirow{2}*{Feature}} & \\multicolumn{1}{c}{\\multirow{2}*{Metric}} & "
+        "\\multicolumn{4}{c}{Suspiciousness} & \\multicolumn{5}{c}{Correlation} "
+        "\\\\\\cmidrule(lr){3-6}\\cmidrule(lr){7-11}\n"
         "    & & \\multicolumn{1}{c}{Best} & \\multicolumn{1}{c}{Mean} & \\multicolumn{1}{c}{Median} & "
         "\\multicolumn{1}{c}{Worst}"
-        + (
-            "& \\multicolumn{1}{c}{Add} & \\multicolumn{1}{c}{Remove} & "
-            "\\multicolumn{1}{c}{Change} & \\multicolumn{1}{c}{All}"
-        )
-        * 2
-        + "\\\\\\midrule\n"
+        "& \\multicolumn{1}{c}{Overall} & \\multicolumn{1}{c}{Best} &  \\multicolumn{1}{c}{Mean} "
+        "& \\multicolumn{1}{c}{Median} & \\multicolumn{1}{c}{Worst} \\\\\\midrule\n"
     )
-    for feature in FEATURES:
+    for feature in features:
         for metric in METRICS:
-            if metric == METRICS[0]:
-                table += (
-                    f"    \\multirow{{{len(METRICS)}}}*{{{tex_translation[feature]}}}"
-                )
+            if features.index(feature) % 2 == 1:
+                table += "\\rowcolor{row}\n"
+            metric = metric.__name__
+            if metric == METRICS[len(METRICS) // 2].__name__:
+                table += f"    {tex_translation[feature]}"
             else:
                 table += "    "
             table += f" & {tex_translation[metric]}"
-            for correlation in AGGREGATES:
+            if metric == METRICS[0].__name__:
+                table += "\\rowstrut{}"
+            for a in AGGREGATES:
                 text_bf = (
-                    feature
-                    in best_for_each_metric[SUSPICIOUSNESS][metric][correlation][0][1]
+                    feature in best_for_each_metric[SUSPICIOUSNESS][metric][a][0][1]
                 )
                 table += " & "
                 if text_bf:
                     table += "\\textbf{\\color{deepblue}"
-                table += (
-                    f"{results[SUSPICIOUSNESS][feature][metric][correlation][AVG]:.3f}"
-                )
+                table += f"{results[SUSPICIOUSNESS][feature][metric][a][AVG]:.3f}"
                 if text_bf:
                     table += "}"
-            if metric == METRICS[0]:
-                subject_part = ""
-                # TODO SUSPICIOUSNESS
+            if metric == METRICS[len(METRICS) // 2].__name__:
+                subject_part = " & "
+                text_bf = feature in best_for_each_metric[CORRELATION][ALL][0][1]
+                if text_bf:
+                    subject_part += "\\textbf{\\color{deepblue}"
+                underline = results[CORRELATION][feature][ALL][TRUE][1] < P_VALUE
+                if underline:
+                    subject_part += "\\underline{"
+                subject_part += f"{results[CORRELATION][feature][ALL][TRUE][0]:.3f}"
+                if underline:
+                    subject_part += "}"
+                if text_bf:
+                    subject_part += "}"
+                for a in AGGREGATES:
+                    subject_part += " & "
+                    text_bf = feature in best_for_each_metric[CORRELATION][a][0][1]
+                    if text_bf:
+                        subject_part += "\\textbf{\\color{deepblue}"
+                    underline = results[CORRELATION][feature][TRUE][a][1] < P_VALUE
+                    if underline:
+                        subject_part += "\\underline{"
+                    subject_part += f"{results[CORRELATION][feature][TRUE][a][0]:.3f}"
+                    if underline:
+                        subject_part += "}"
+                    if text_bf:
+                        subject_part += "}"
                 table += subject_part
             else:
-                table += " & " * 8
-            table += "\\\\\n"
-        table += "\\addlinespace[0.5em]"
+                table += " & " * 5
+            table += "\\\\"
+            if metric != METRICS[-1].__name__:
+                table += "\n"
+        table += "[.2em]\n"
     table += "\\bottomrule\n\\end{tabular}\n"
     return table
+
+
+def get_correlation_tex_table(results, best_for_each_metric):
+    return (
+        get_correlation_table(
+            results, best_for_each_metric, FEATURES[: len(FEATURES) // 2]
+        ),
+        get_correlation_table(
+            results, best_for_each_metric, FEATURES[len(FEATURES) // 2 :]
+        ),
+    )
 
 
 def write_tex(results, best_for_each_metric):
     tex_output = Path("tex")
     if not tex_output.exists():
         tex_output.mkdir()
-    correlation_table = get_correlation_tex_table(results, best_for_each_metric)
-    with Path(tex_output, "correlation.tex").open("w") as f:
-        f.write(correlation_table)
-    localization_table, unified_table = get_localization_tex_table(
+    correlation_table_1, correlation_table_2 = get_correlation_tex_table(
         results, best_for_each_metric
     )
-    with Path(tex_output, "localization.tex").open("w") as f:
-        f.write(localization_table)
+    with Path(tex_output, "correlation_1.tex").open("w") as f:
+        f.write(correlation_table_1)
+    with Path(tex_output, "correlation_2.tex").open("w") as f:
+        f.write(correlation_table_2)
+    (
+        localization_table_1,
+        localization_table_2,
+        unified_table,
+    ) = get_localization_tex_table(results, best_for_each_metric)
+    with Path(tex_output, "localization_1.tex").open("w") as f:
+        f.write(localization_table_1)
+    with Path(tex_output, "localization_2.tex").open("w") as f:
+        f.write(localization_table_2)
     with Path(tex_output, "unified_localization.tex").open("w") as f:
         f.write(unified_table)
 
@@ -210,20 +265,47 @@ def analyze(results):
     best_for_each_metric = {
         SUSPICIOUSNESS: dict(),
         LOCALIZATION: dict(),
+        CORRELATION: {
+            ALL: [],
+            BEST: [],
+            MEAN: [],
+            MEDIAN: [],
+            WORST: [],
+        },
     }
+    bests = dict()
+    for feature in FEATURES:
+        value, _ = results[CORRELATION][feature][ALL][TRUE]
+        if value in bests:
+            bests[value].append(feature)
+        else:
+            bests[value] = [feature]
+    bests = sorted([(score, bests[score]) for score in bests], reverse=True)
+    best_for_each_metric[CORRELATION][ALL] = bests
+    for a in AGGREGATES:
+        bests = dict()
+        for feature in FEATURES:
+            value, _ = results[CORRELATION][feature][TRUE][a]
+            if value in bests:
+                bests[value].append(feature)
+            else:
+                bests[value] = [feature]
+        bests = sorted([(score, bests[score]) for score in bests], reverse=True)
+        best_for_each_metric[CORRELATION][a] = bests
     for metric in METRICS:
+        metric = metric.__name__
         best_for_each_metric[SUSPICIOUSNESS][metric] = dict()
         best_for_each_metric[LOCALIZATION][metric] = dict()
-        for correlation in AGGREGATES:
+        for a in AGGREGATES:
             bests = dict()
             for feature in FEATURES:
-                avg = results[SUSPICIOUSNESS][feature][metric][correlation][AVG]
+                avg = results[SUSPICIOUSNESS][feature][metric][a][AVG]
                 if avg in bests:
                     bests[avg].append(feature)
                 else:
                     bests[avg] = [feature]
             bests = sorted([(score, bests[score]) for score in bests], reverse=True)
-            best_for_each_metric[SUSPICIOUSNESS][metric][correlation] = bests
+            best_for_each_metric[SUSPICIOUSNESS][metric][a] = bests
         for scenario in SCENARIOS:
             best_for_each_metric[LOCALIZATION][metric][scenario] = dict()
             for localization, comp in zip(LOCALIZATIONS, LOCALIZATION_COMP):

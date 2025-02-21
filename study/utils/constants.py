@@ -121,3 +121,5 @@ SUMMARY = Path("summary.json")
 TRUE = "true"
 FALSE = "false"
 TOTAL = "total"
+
+P_VALUE = 0.05

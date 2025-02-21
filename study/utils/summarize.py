@@ -25,6 +25,7 @@ from utils.constants import (
     BEST,
     MEAN,
     MEDIAN,
+    P_VALUE,
 )
 
 warnings.filterwarnings("ignore")
@@ -35,7 +36,7 @@ def spearman(x, y):
     if isnan(rho):
         rho = 0
     if isnan(p):
-        p = 0
+        p = 1
     return rho, p
 
 
@@ -46,12 +47,8 @@ def summarize():
         CORRELATION: {
             type_: {
                 TRUE: {ALL: list(), **{a: (0, 0) for a in AGGREGATES}},
-                FALSE: {ALL: list(), **{a: (0, 0) for a in AGGREGATES}},
-                TOTAL: {ALL: list(), **{a: (0, 0) for a in AGGREGATES}},
                 ALL: {
                     TRUE: (0, 0),
-                    FALSE: (0, 0),
-                    TOTAL: (0, 0),
                 },
             }
             for type_ in FEATURES + UNIFIED
@@ -95,26 +92,11 @@ def summarize():
                 number_of_subjects += 1
                 for t in FEATURES + UNIFIED:
                     all_corr[t][TRUE].extend(subject_data[s][t][CORRELATION][TRUE])
-                    all_corr[t][FALSE].extend(subject_data[s][t][CORRELATION][FALSE])
                     all_corr[t][TOTAL].extend(subject_data[s][t][CORRELATION][TOTAL])
                     results[CORRELATION][t][TRUE][ALL].append(
                         spearman(
                             subject_data[s][t][CORRELATION][TRUE],
                             subject_data[s][t][CORRELATION][TOTAL],
-                        )
-                    )
-                    results[CORRELATION][t][FALSE][ALL].append(
-                        spearman(
-                            subject_data[s][t][CORRELATION][FALSE],
-                            subject_data[s][t][CORRELATION][TOTAL],
-                        )
-                    )
-                    results[CORRELATION][t][TOTAL][ALL].append(
-                        spearman(
-                            subject_data[s][t][CORRELATION][TRUE]
-                            + subject_data[s][t][CORRELATION][FALSE],
-                            subject_data[s][t][CORRELATION][TOTAL]
-                            + subject_data[s][t][CORRELATION][TOTAL],
                         )
                     )
                     for m in METRICS:
@@ -133,27 +115,36 @@ def summarize():
         results[CORRELATION][t][ALL][TRUE] = spearman(
             all_corr[t][TRUE], all_corr[t][TOTAL]
         )
-        results[CORRELATION][t][ALL][FALSE] = spearman(
-            all_corr[t][FALSE], all_corr[t][TOTAL]
-        )
-        results[CORRELATION][t][ALL][TOTAL] = spearman(
-            all_corr[t][TRUE] + all_corr[t][FALSE],
-            all_corr[t][TOTAL] + all_corr[t][TOTAL],
-        )
         for a in AGGREGATES:
             if a == BEST:
-                func = max
+                r, p = 0, 1
+                for r_, p_ in results[CORRELATION][t][TRUE][ALL]:
+                    if p < P_VALUE <= p_:
+                        continue
+                    if abs(r) < abs(r_):
+                        r = r_
+                        p = p_
+                    elif abs(r) == abs(r_):
+                        p = min(p, p_)
             elif a == MEAN:
-                func = lambda x: sum(x) / len(x)
+                mean = lambda cors: sum(cors) / len(cors)
+                r = mean([x for x, _ in results[CORRELATION][t][TRUE][ALL]])
+                p = mean([y for _, y in results[CORRELATION][t][TRUE][ALL]])
             elif a == MEDIAN:
-                func = lambda x: sorted(x)[len(x) // 2]
+                median = lambda cors: sorted(cors)[len(cors) // 2]
+                r = median([x for x, _ in results[CORRELATION][t][TRUE][ALL]])
+                p = median([y for _, y in results[CORRELATION][t][TRUE][ALL]])
             else:
-                func = min
-            f = lambda rhos, ps: (func(rhos), func(ps))
-            for r in [TRUE, FALSE, TOTAL]:
-                results[CORRELATION][t][r][a] = f(
-                    *zip(*results[CORRELATION][t][r][ALL])
-                )
+                r, p = 1, 1
+                for r_, p_ in results[CORRELATION][t][TRUE][ALL]:
+                    if p < P_VALUE <= p_:
+                        continue
+                    if abs(r) > abs(r_):
+                        r = r_
+                        p = p_
+                    elif abs(r) == abs(r_):
+                        p = min(p, p_)
+            results[CORRELATION][t][TRUE][a] = (r, p)
         for m in METRICS:
             m = m.__name__
             for c in AGGREGATES:
