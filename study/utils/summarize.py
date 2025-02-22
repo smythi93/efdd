@@ -91,14 +91,17 @@ def summarize():
             for s in subject_data:
                 number_of_subjects += 1
                 for t in FEATURES + UNIFIED:
-                    all_corr[t][TRUE].extend(subject_data[s][t][CORRELATION][TRUE])
-                    all_corr[t][TOTAL].extend(subject_data[s][t][CORRELATION][TOTAL])
-                    results[CORRELATION][t][TRUE][ALL].append(
-                        spearman(
-                            subject_data[s][t][CORRELATION][TRUE],
-                            subject_data[s][t][CORRELATION][TOTAL],
+                    if t in FEATURES:
+                        all_corr[t][TRUE].extend(subject_data[s][t][CORRELATION][TRUE])
+                        all_corr[t][TOTAL].extend(
+                            subject_data[s][t][CORRELATION][TOTAL]
                         )
-                    )
+                        results[CORRELATION][t][TRUE][ALL].append(
+                            spearman(
+                                subject_data[s][t][CORRELATION][TRUE],
+                                subject_data[s][t][CORRELATION][TOTAL],
+                            )
+                        )
                     for m in METRICS:
                         m = m.__name__
                         for c in AGGREGATES:
@@ -112,39 +115,40 @@ def summarize():
                                 )
 
     for t in FEATURES + UNIFIED:
-        results[CORRELATION][t][ALL][TRUE] = spearman(
-            all_corr[t][TRUE], all_corr[t][TOTAL]
-        )
-        for a in AGGREGATES:
-            if a == BEST:
-                r, p = 0, 1
-                for r_, p_ in results[CORRELATION][t][TRUE][ALL]:
-                    if p < P_VALUE <= p_:
-                        continue
-                    if abs(r) < abs(r_):
-                        r = r_
-                        p = p_
-                    elif abs(r) == abs(r_):
-                        p = min(p, p_)
-            elif a == MEAN:
-                mean = lambda cors: sum(cors) / len(cors)
-                r = mean([x for x, _ in results[CORRELATION][t][TRUE][ALL]])
-                p = mean([y for _, y in results[CORRELATION][t][TRUE][ALL]])
-            elif a == MEDIAN:
-                median = lambda cors: sorted(cors)[len(cors) // 2]
-                r = median([x for x, _ in results[CORRELATION][t][TRUE][ALL]])
-                p = median([y for _, y in results[CORRELATION][t][TRUE][ALL]])
-            else:
-                r, p = 1, 1
-                for r_, p_ in results[CORRELATION][t][TRUE][ALL]:
-                    if p < P_VALUE <= p_:
-                        continue
-                    if abs(r) > abs(r_):
-                        r = r_
-                        p = p_
-                    elif abs(r) == abs(r_):
-                        p = min(p, p_)
-            results[CORRELATION][t][TRUE][a] = (r, p)
+        if t in FEATURES:
+            results[CORRELATION][t][ALL][TRUE] = spearman(
+                all_corr[t][TRUE], all_corr[t][TOTAL]
+            )
+            for a in AGGREGATES:
+                if a == BEST:
+                    r, p = 0, 1
+                    for r_, p_ in results[CORRELATION][t][TRUE][ALL]:
+                        if p < P_VALUE <= p_:
+                            continue
+                        if abs(r) < abs(r_):
+                            r = r_
+                            p = p_
+                        elif abs(r) == abs(r_):
+                            p = min(p, p_)
+                elif a == MEAN:
+                    mean = lambda cors: sum(cors) / len(cors)
+                    r = mean([x for x, _ in results[CORRELATION][t][TRUE][ALL]])
+                    p = mean([y for _, y in results[CORRELATION][t][TRUE][ALL]])
+                elif a == MEDIAN:
+                    median = lambda cors: sorted(cors)[len(cors) // 2]
+                    r = median([x for x, _ in results[CORRELATION][t][TRUE][ALL]])
+                    p = median([y for _, y in results[CORRELATION][t][TRUE][ALL]])
+                else:
+                    r, p = 1, 1
+                    for r_, p_ in results[CORRELATION][t][TRUE][ALL]:
+                        if p < P_VALUE <= p_:
+                            continue
+                        if abs(r) > abs(r_):
+                            r = r_
+                            p = p_
+                        elif abs(r) == abs(r_):
+                            p = min(p, p_)
+                results[CORRELATION][t][TRUE][a] = (r, p)
         for m in METRICS:
             m = m.__name__
             for c in AGGREGATES:

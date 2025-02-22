@@ -195,3 +195,4 @@ study/sflkit_events
 study/mappings
 study/analysis
 study/need_investigation.json
+**/*.tex
