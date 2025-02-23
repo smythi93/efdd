@@ -31,6 +31,7 @@ from utils.constants import (
     UNIFIED_AVG,
     CORRELATION,
     TRUE,
+    TOTAL,
 )
 
 
@@ -48,6 +49,7 @@ def get_results_for_type(
     if include_correlation:
         type_results[CORRELATION] = {
             TRUE: [],
+            TOTAL: [],
         }
     type_results[LOCALIZATION] = dict()
     if type_:
@@ -58,8 +60,14 @@ def get_results_for_type(
         for object_ in analysis:
             if isinstance(object_, Spectrum):
                 type_results[CORRELATION][TRUE].append(object_.failed_observed)
+                type_results[CORRELATION][TOTAL].append(
+                    object_.failed_observed + object_.passed_observed
+                )
             elif isinstance(object_, Predicate):
                 type_results[CORRELATION][TRUE].append(object_.true_relevant)
+                type_results[CORRELATION][TOTAL].append(
+                    object_.true_relevant + object_.true_irrelevant
+                )
     for metric in METRICS:
         suggestions = analyzer.get_sorted_suggestions_from_analysis(
             report.location, analysis, metric
