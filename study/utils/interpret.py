@@ -76,7 +76,7 @@ def get_localization_table(results, best_for_each_metric, features):
             )
             * 3
         )
-        + "\\\\\\cmidrule{3-6}\\cmidrule{9-11}\\cmidrule{15-17}\n    &"
+        + "\\\\\\cmidrule{3-6}\\cmidrule{9-12}\\cmidrule{15-18}\n    &"
         + (
             (
                 " & \\multicolumn{1}{c}{1} & \\multicolumn{1}{c}{5}"
