@@ -12,7 +12,7 @@ authors = [
     { name = "Marius Smytzek", email = "marius.smytzek@cispa.de" },
     { name = "Martin Eberlein", email = "ebermart@informatik.hu-berlin.de" },
 ]
-description = "Oracles from Examples"
+description = "Execution-Feature-Driven Debugging"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.10"
