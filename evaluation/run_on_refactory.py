@@ -127,7 +127,7 @@ def get_features(
     tests = get_tests(question, eval_path, limit=limit)
     events, _ = get_events_from_tests(question, tests, src, mapping_path)
     handler = EventHandler()
-    handler.handle(events)
+    handler.handle_files(events)
     return handler
 
 
