@@ -68,12 +68,13 @@ ONLY_FUNCTIONS = False
 LIMIT = None
 
 
-def get_features_from_tests(
+def get_events_from_tests(
     question: int,
     tests: Sequence[str],
     src: os.PathLike,
     mapping_path: os.PathLike,
 ) -> EventHandler:
+    start_execution = time.time()
     collector = RefactoryEventCollector(
         Path.cwd(),
         src,
@@ -81,9 +82,8 @@ def get_features_from_tests(
         expected_results=EXPECTED_OUTPUTS.get(question, dict()),
     )
     events = collector.get_events(tests)
-    handler = EventHandler()
-    handler.handle_files(events)
-    return handler
+    end_execution = time.time()
+    return events, end_execution - start_execution
 
 
 def get_tests(question: int, path: Path, limit: Optional[int] = None) -> List[str]:
@@ -105,27 +105,45 @@ def get_tests(question: int, path: Path, limit: Optional[int] = None) -> List[st
     return tests
 
 
-def get_features(
+def get_events(
     question: int,
     path: Path,
     src: os.PathLike,
     mapping_path: os.PathLike,
     limit: Optional[int] = None,
 ):
-    return get_features_from_tests(
+    return get_events_from_tests(
         question, get_tests(question, path, limit), src, mapping_path
     )
 
 
+def get_features(
+    question: int,
+    eval_path: Path,
+    src: os.PathLike,
+    mapping_path: os.PathLike,
+    limit: Optional[int] = None,
+) -> EventHandler:
+    tests = get_tests(question, eval_path, limit=limit)
+    events, _ = get_events_from_tests(question, tests, src, mapping_path)
+    handler = EventHandler()
+    handler.handle(events)
+    return handler
+
+
 def get_model(question: int, ans_path, src: os.PathLike, mapping_path: os.PathLike):
-    handler = get_features(question, ans_path, src, mapping_path)
-    all_features = handler.builder.get_all_features()
+    events, execution_time = get_events(question, ans_path, src, mapping_path)
     path = Path("dt")
     if path.exists():
         os.remove(path)
+    diagnosis_start = time.time()
+    handler = EventHandler()
+    handler.handle(events)
+    all_features = handler.builder.get_all_features()
     model = DecisionTreeDiagnosis(path=path)
     model.fit(all_features, handler)
-    return model
+    diagnosis_time = time.time() - diagnosis_start
+    return model, execution_time, diagnosis_time
 
 
 def verify_example(
@@ -159,11 +177,12 @@ def run_on_example(
             LOGGER.info(f"Get oracle for {name}")
             start = time.time()
             try:
-                model = get_model(question, path / ANS, file, mapping_path)
+                model, execution_time, diagnosis_time = get_model(
+                    question, path / ANS, file, mapping_path
+                )
             except ValueError:
                 LOGGER.info(f"Skip evaluation of {name}")
                 return None
-            timing = time.time() - start
             LOGGER.info(f"Get evaluation features of {name}")
             eval_features = get_features(
                 question, eval_path, file, mapping_path, limit=limit
@@ -175,7 +194,9 @@ def run_on_example(
             result = {
                 "eval": report_eval,
                 "confusion": confusion_matrix,
-                "time": timing,
+                "time_execution": execution_time,
+                "time_diagnosis": diagnosis_time,
+                "data": model.get_information(),
             }
             RESULTS[name] = result
             return result

@@ -73,7 +73,7 @@ LOCALIZATIONS = [
     TOP1,
     TOP5,
     TOP10,
-    TOP200,
+    #    TOP200,
     EXAM,
     WASTED_EFFORT,
 ]

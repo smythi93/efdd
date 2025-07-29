@@ -7,6 +7,7 @@ from typing import Sequence, Tuple, Any, Optional, List
 import pandas as pd
 import shap
 from joblib import dump, load
+from sflkit.analysis.spectra import Line
 from sflkit.features.handler import EventHandler
 from sflkit.features.value import Feature
 from sklearn import tree
@@ -101,6 +102,9 @@ class DiagnosisGenerator(ABC):
         self.y_train = pd.concat((self.y_train, y_train))
         self.train()
 
+    def get_information(self) -> dict[str, Any]:
+        return dict()
+
 
 class DecisionTreeDiagnosis(DiagnosisGenerator):
     def __init__(
@@ -119,4 +123,16 @@ class DecisionTreeDiagnosis(DiagnosisGenerator):
             model = load(str(path))
         super().__init__(
             model=model, path=path, reducer=reducer, explainer=shap.TreeExplainer
+        )
+
+    def get_information(self) -> dict[str, Any]:
+        depth = self.model.get_depth()
+        n_leaves = self.model.get_n_leaves()
+        indices = [i for i, x in enumerate(self.model.feature_importances_) if x > 0]
+        features = [self.all_features[i] for i in indices]
+        return dict(
+            depth=depth,
+            n_leaves=int(n_leaves),
+            complex_features=any(not isinstance(f, Line) for f in features),
+            features=[f.analysis.analysis_type().value for f in features],
         )

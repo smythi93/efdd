@@ -6,7 +6,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "effd"
+name = "efdd"
 version = "0.0.1"
 authors = [
     { name = "Marius Smytzek", email = "marius.smytzek@cispa.de" },
@@ -14,11 +14,10 @@ authors = [
 ]
 description = "Execution-Feature-Driven Debugging"
 readme = "README.md"
-license = { file = "LICENSE" }
+license-files = ["LICENSE*"]
 requires-python = ">=3.10"
 classifiers = [
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3.10",
     "Operating System :: OS Independent",
     "Topic :: Scientific/Engineering",
@@ -30,7 +29,7 @@ dependencies = [
     "numba >= 0.61.0",
     "shap >= 0.46.0",
     "joblib >= 1.4.2",
-    "sflkit >= 0.3.5",
+    "sflkit >= 0.4.0",
     "tests4py >= 0.0.13",
     "unidiff >= 0.7.5",
 ]

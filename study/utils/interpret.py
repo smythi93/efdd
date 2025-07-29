@@ -63,24 +63,45 @@ tex_translation = {
 
 def get_localization_table(results, best_for_each_metric, features):
     table = (
-        "\\begin{tabular}{llrrrrrrrrrrrrrrrrrr}\n"
+        "\\begin{tabular}{ll" + "r" * len(LOCALIZATIONS) * 3 + "}\n"
         "    \\toprule\n"
         "    \\multicolumn{1}{c}{\\multirow{4}*{Feature}} & \\multicolumn{1}{c}{\\multirow{4}*{Metric}} & "
-        "\\multicolumn{6}{c}{Best-Case Debugging} & \\multicolumn{6}{c}{Average-Case Debugging} & "
-        "\\multicolumn{6}{c}{Worst-Case Debugging} \\\\\\cmidrule(lr){3-8}\\cmidrule(lr){9-14}\\cmidrule(lr){15-20}\n"
+        "\\multicolumn{"
+        f"{len(LOCALIZATIONS)}"
+        "}{c}{Best-Case Debugging} & \\multicolumn{"
+        f"{len(LOCALIZATIONS)}"
+        "}{c}{Average-Case Debugging} & "
+        "\\multicolumn{"
+        f"{len(LOCALIZATIONS)}"
+        "}{c}{Worst-Case Debugging} \\\\"
+        "\\cmidrule(lr){3-"
+        f"{3 + len(LOCALIZATIONS) - 1}"
+        "}\\cmidrule(lr){"
+        f"{3 + len(LOCALIZATIONS)}-{3 + 2 * len(LOCALIZATIONS) - 1}"
+        "}\\cmidrule(lr){"
+        f"{3 + 2 * len(LOCALIZATIONS)}-{3 + 3 * len(LOCALIZATIONS) - 1}"
+        "}\n"
         "    &"
         + (
             (
-                " & \\multicolumn{4}{c}{Top-k} & \\multicolumn{1}{c}{\\multirow{2}*{\\EXAM{}}} & "
+                " & \\multicolumn{"
+                f"{len(LOCALIZATIONS) - 2}"
+                "}{c}{Top-k} & \\multicolumn{1}{c}{\\multirow{2}*{\\EXAM{}}} & "
                 "\\multicolumn{1}{c}{\\multirow{2}*{Effort}}\n"
             )
             * 3
         )
-        + "\\\\\\cmidrule{3-6}\\cmidrule{9-12}\\cmidrule{15-18}\n    &"
+        + "\\\\\\cmidrule{"
+        f"3-{3 + (len(LOCALIZATIONS) - 3)}"
+        "}\\cmidrule{"
+        f"{3 + len(LOCALIZATIONS)}-{3 + 2 * len(LOCALIZATIONS) - 3}"
+        "}\\cmidrule{"
+        f"{3 + 2 * len(LOCALIZATIONS)}-{3 + 3 * len(LOCALIZATIONS) - 3}"
+        "}\n    &"
         + (
             (
                 " & \\multicolumn{1}{c}{1} & \\multicolumn{1}{c}{5}"
-                " & \\multicolumn{1}{c}{10} & \\multicolumn{1}{c}{200} & &\n"
+                " & \\multicolumn{1}{c}{10} & &\n"
             )
             * 3
         )
@@ -156,13 +177,12 @@ def get_localization_tex_table(results, best_for_each_metric):
 
 def get_correlation_table(results, best_for_each_metric, features):
     table = (
-        "\\begin{tabular}{llrrrrrrrrr}\n"
+        "\\begin{tabular}{llrrrrrrrr}\n"
         "    \\toprule\n"
         "    \\multicolumn{1}{c}{\\multirow{2}*{Feature}} & \\multicolumn{1}{c}{\\multirow{2}*{Metric}} & "
-        "\\multicolumn{4}{c}{Suspiciousness} & \\multicolumn{5}{c}{Correlation} "
-        "\\\\\\cmidrule(lr){3-6}\\cmidrule(lr){7-11}\n"
-        "    & & \\multicolumn{1}{c}{Best} & \\multicolumn{1}{c}{Mean} & \\multicolumn{1}{c}{Median} & "
-        "\\multicolumn{1}{c}{Worst}"
+        "\\multicolumn{3}{c}{Suspiciousness} & \\multicolumn{5}{c}{Correlation} "
+        "\\\\\\cmidrule(lr){3-5}\\cmidrule(lr){6-10}\n"
+        "    & & \\multicolumn{1}{c}{Best} & \\multicolumn{1}{c}{Mean} & \\multicolumn{1}{c}{Median} "
         "& \\multicolumn{1}{c}{Overall} & \\multicolumn{1}{c}{Best} &  \\multicolumn{1}{c}{Mean} "
         "& \\multicolumn{1}{c}{Median} & \\multicolumn{1}{c}{Worst} \\\\\\midrule\n"
     )
@@ -179,6 +199,8 @@ def get_correlation_table(results, best_for_each_metric, features):
             if metric == METRICS[0].__name__:
                 table += "\\rowstrut{}"
             for a in AGGREGATES:
+                if a == WORST:
+                    continue
                 text_bf = (
                     feature in best_for_each_metric[SUSPICIOUSNESS][metric][a][0][1]
                 )
@@ -243,20 +265,20 @@ def write_tex(results, best_for_each_metric):
     correlation_table_1, correlation_table_2 = get_correlation_tex_table(
         results, best_for_each_metric
     )
-    with Path(tex_output, "correlation_1.tex").open("w") as f:
+    with Path(tex_output, "correlation-1.tex").open("w") as f:
         f.write(correlation_table_1)
-    with Path(tex_output, "correlation_2.tex").open("w") as f:
+    with Path(tex_output, "correlation-2.tex").open("w") as f:
         f.write(correlation_table_2)
     (
         localization_table_1,
         localization_table_2,
         unified_table,
     ) = get_localization_tex_table(results, best_for_each_metric)
-    with Path(tex_output, "localization_1.tex").open("w") as f:
+    with Path(tex_output, "localization-1.tex").open("w") as f:
         f.write(localization_table_1)
-    with Path(tex_output, "localization_2.tex").open("w") as f:
+    with Path(tex_output, "localization-2.tex").open("w") as f:
         f.write(localization_table_2)
-    with Path(tex_output, "unified_localization.tex").open("w") as f:
+    with Path(tex_output, "unified-localization.tex").open("w") as f:
         f.write(unified_table)
 
 
