@@ -138,7 +138,7 @@ def get_model(question: int, ans_path, src: os.PathLike, mapping_path: os.PathLi
         os.remove(path)
     diagnosis_start = time.time()
     handler = EventHandler()
-    handler.handle(events)
+    handler.handle_files(events)
     all_features = handler.builder.get_all_features()
     model = DecisionTreeDiagnosis(path=path)
     model.fit(all_features, handler)
@@ -175,7 +175,6 @@ def run_on_example(
             else:
                 instrument(file, DST, mapping_path)
             LOGGER.info(f"Get oracle for {name}")
-            start = time.time()
             try:
                 model, execution_time, diagnosis_time = get_model(
                     question, path / ANS, file, mapping_path
