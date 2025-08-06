@@ -177,14 +177,14 @@ def get_localization_tex_table(results, best_for_each_metric):
 
 def get_correlation_table(results, best_for_each_metric, features):
     table = (
-        "\\begin{tabular}{llrrrrrrrr}\n"
+        "\\begin{tabular}{llrrrrrrr}\n"
         "    \\toprule\n"
         "    \\multicolumn{1}{c}{\\multirow{2}*{Feature}} & \\multicolumn{1}{c}{\\multirow{2}*{Metric}} & "
-        "\\multicolumn{3}{c}{Suspiciousness} & \\multicolumn{5}{c}{Correlation} "
-        "\\\\\\cmidrule(lr){3-5}\\cmidrule(lr){6-10}\n"
+        "\\multicolumn{3}{c}{Suspiciousness} & \\multicolumn{4}{c}{Correlation} "
+        "\\\\\\cmidrule(lr){3-5}\\cmidrule(lr){6-9}\n"
         "    & & \\multicolumn{1}{c}{Best} & \\multicolumn{1}{c}{Mean} & \\multicolumn{1}{c}{Median} "
         "& \\multicolumn{1}{c}{Overall} & \\multicolumn{1}{c}{Best} &  \\multicolumn{1}{c}{Mean} "
-        "& \\multicolumn{1}{c}{Median} & \\multicolumn{1}{c}{Worst} \\\\\\midrule\n"
+        "& \\multicolumn{1}{c}{Median} \\\\\\midrule\n"
     )
     for feature in features:
         for metric in METRICS:
@@ -224,6 +224,8 @@ def get_correlation_table(results, best_for_each_metric, features):
                 if text_bf:
                     subject_part += "}"
                 for a in AGGREGATES:
+                    if a == WORST:
+                        continue
                     subject_part += " & "
                     text_bf = feature in best_for_each_metric[CORRELATION][a][0][1]
                     if text_bf:
@@ -238,7 +240,7 @@ def get_correlation_table(results, best_for_each_metric, features):
                         subject_part += "}"
                 table += subject_part
             else:
-                table += " & " * 5
+                table += " & " * 4
             table += "\\\\"
             if metric != METRICS[-1].__name__:
                 table += "\n"

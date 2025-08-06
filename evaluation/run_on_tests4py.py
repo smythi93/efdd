@@ -100,7 +100,7 @@ def evaluate_project(project: Project):
             for file in os.listdir(TRAINING):
                 with open(TRAINING / file, "r") as fp:
                     inputs.append(fp.read())
-            logging.info(f"Training and evaluating initial oracle")
+            logging.info(f"Training and evaluating diagnosis")
             start_execution = time.time()
             # do not split input with shlex for cookiecutter
             collector = Tests4PyEventCollector(

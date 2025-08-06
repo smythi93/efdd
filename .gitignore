@@ -187,6 +187,8 @@ evaluation/refactory
 evaluation/data.zip
 *EVENTS_PATH
 *.pdf
+evaluation/tmp
+evaluation/tmp_tests
 evaluation/mapping_*.json
 evaluation/middle.json
 evaluation/middle.py
