@@ -1,7 +1,7 @@
 import json
 import sys
 from pathlib import Path
-from confusion import Confusion, get_confusion
+from confusion import Confusion, get_confusion, Metrics, get_metrics
 
 RESULTS_1 = Path("results", "refactory_1.json")
 RESULTS_2 = Path("results", "refactory_2.json")
@@ -18,22 +18,25 @@ CONFUSION = "confusion"
 
 def get_results(path: Path) -> Confusion:
     result = Confusion(total=0)
+    metrics = Metrics()
     if path.exists():
         refactory_results = json.loads(path.read_text("utf8"))
         for name in refactory_results:
             result += get_confusion(refactory_results[name], name=name)
-    return result
+            metrics += get_metrics(refactory_results[name], name=name)
+    return result, metrics
 
 
-def main(function: bool = False):
+def main():
     results = Confusion(total=0)
+    metrics = Metrics()
     for path in (RESULTS_1, RESULTS_2, RESULTS_3, RESULTS_4, RESULTS_5):
-        if function:
-            parts = path.parts
-            path = Path(*parts[:-1], parts[-1].replace(".json", "_functions.json"))
-        results += get_results(path)
+        r, m = get_results(path)
+        results += r
+        metrics += m
     results.print()
+    metrics.print()
 
 
 if __name__ == "__main__":
-    main(len(sys.argv) > 1 and sys.argv[1] == "-f")
+    main()

@@ -73,7 +73,7 @@ LOCALIZATIONS = [
     TOP1,
     TOP5,
     TOP10,
-    #    TOP200,
+    # TOP200,
     EXAM,
     WASTED_EFFORT,
 ]
@@ -82,7 +82,7 @@ LOCALIZATION_COMP = [
     True,
     True,
     True,
-    True,
+    # True,
     False,
     False,
 ]
