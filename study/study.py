@@ -11,6 +11,7 @@ from utils.check import check
 from utils.events import get_events
 from utils.interpret import interpret
 from utils.evaluate import evaluate
+from utils.stats import stats, get_avg_features, locs_to_features
 from utils.summarize import summarize
 
 
@@ -76,6 +77,24 @@ def parse_args(*args: str):
         help="execute the calculation of the metrics for the projects",
     )
 
+    stats_parser = commands.add_parser(
+        "stats",
+        description="The stats command computes statistics about the projects.",
+        help="execute the computation of statistics about the projects",
+    )
+
+    avg_features_parser = commands.add_parser(
+        "avg_features",
+        description="The avg_features command computes average features about the projects.",
+        help="execute the computation of average features about the projects",
+    )
+
+    locs_to_features_parser = commands.add_parser(
+        "locs_to_features",
+        description="The locs_to_features command generates a plot of lines of code to features.",
+        help="execute the generation of a plot of lines of code to features",
+    )
+
     for parser in (analyze_parser, events_parser, metrics_parser):
         parser.add_argument(
             "-p", required=True, dest="project_name", help="project name"
@@ -95,6 +114,9 @@ def parse_args(*args: str):
         check_parser,
         interpret_parser,
         summarize_parser,
+        stats_parser,
+        avg_features_parser,
+        locs_to_features_parser,
     ):
         parser.add_argument(
             "-q",
@@ -138,6 +160,12 @@ def main(*args: str, stdout=sys.stdout, stderr=sys.stderr):
         get_events(args.project_name, args.bug_id, args.start, args.end)
     elif args.command == "evaluate":
         evaluate(args.project_name, args.bug_id, args.start, args.end)
+    elif args.command == "stats":
+        stats()
+    elif args.command == "avg_features":
+        get_avg_features()
+    elif args.command == "locs_to_features":
+        locs_to_features()
     else:
         raise ValueError(f"Unknown command: {args.command}")
 

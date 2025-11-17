@@ -417,10 +417,7 @@ def interpret(tex=False, plots=None, n=5):
         results = json.load(f)
     best_for_each_metric = analyze(results)
     if tex:
-        write_tex(
-            results,
-            best_for_each_metric,
-        )
+        write_tex(results, best_for_each_metric)
     if plots:
         for plot in plots:
             write_plot(plot, results, best_for_each_metric, n)
