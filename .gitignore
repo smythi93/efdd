@@ -198,3 +198,4 @@ study/mappings
 study/analysis
 study/need_investigation.json
 **/*.tex
+*.DS_Store
