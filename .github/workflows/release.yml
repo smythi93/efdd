@@ -1,0 +1,44 @@
+name: Release SFLKit to PyPi and GitHub Releases
+on:
+  push:
+    branches:
+      - release
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Release push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract version from pyproject.toml
+        id: get_version
+        run: |
+          version=$(grep '^version =' pyproject.toml | sed -E "s/version = ['\"]([^'\"]+)['\"]/\\1/")
+          echo "version=$version" >> $GITHUB_OUTPUT
+      - name: Create GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "${{ steps.get_version.outputs.version }}" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${{ steps.get_version.outputs.version }}" \
+              --generate-notes
+  pypi-publish:
+    name: Upload release to PyPI
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/efdd/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build package distributions
+        run: |
+          pipx install build
+          pipx run build --sdist --wheel
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
